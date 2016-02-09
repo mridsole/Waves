@@ -27,6 +27,7 @@ public:
 
 		// can only be constructed by DirectedGraph::createEdge
 	protected:
+
 		Edge(Node* _startNode, Node* _endNode) :
 			startNode(_startNode),
 			endNode(_endNode)
@@ -99,8 +100,8 @@ public:
 	template <typename NodeType, typename... Ts>
 	NodeType* emplaceNode(Ts&&... args) {
 
-		NodeType* node = new NodeType(args...);
-		nodes.push_back(node);
+		nodes.emplace_back(args...);
+		Node* node = &(*(nodes.end() - 1));
 		return node;
 	}
 
@@ -110,7 +111,8 @@ public:
 		if (startNode == nullptr && endNode == nullptr)
 			throw std::invalid_argument("Error creating edge: both nodes can't be null.");
 
-		EdgeType* edge = new EdgeType(startNode, endNode, args...);
+		edges.emplace_back(args...);
+		EdgeType* edge = &(*(edges.end() - 1));
 
 		if (startNode != nullptr)
 			startNode->connections.push_back(Connection(edge, startNode, false));
@@ -118,7 +120,6 @@ public:
 		if (endNode != nullptr)
 			endNode->connections.push_back(Connection(edge, endNode, true));
 		
-		edges.push_back(edge);
 		return edge;
 	}
 
