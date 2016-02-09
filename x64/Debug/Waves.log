@@ -1,0 +1,77 @@
+﻿  stdafx.cpp
+  SimWire.cpp
+  SimNode.cpp
+  SimController.cpp
+  main.cpp
+e:\projects\waves\waves\heatwave.h(6): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  imgui_draw.cpp
+e:\projects\waves\waves\imgui\imgui_draw.cpp(15): warning C4627: '#include "imgui.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(15): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(17): warning C4627: '#include "imgui_internal.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(17): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(20): warning C4627: '#include <new>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(20): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(23): warning C4627: '#include <malloc.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(23): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(25): warning C4627: '#include <alloca.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(25): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(76): warning C4627: '#include "stb_rect_pack.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(76): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(87): warning C4627: '#include "stb_truetype.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_draw.cpp(87): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_draw.cpp(2287): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  imgui_demo.cpp
+e:\projects\waves\waves\imgui\imgui_demo.cpp(12): warning C4627: '#include "imgui.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(12): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(13): warning C4627: '#include <ctype.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(13): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(14): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(14): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(16): warning C4627: '#include <stdlib.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(16): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(18): warning C4627: '#include <stddef.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(18): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(20): warning C4627: '#include <stdint.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(20): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui_demo.cpp(41): warning C4005: 'IM_NEWLINE': macro redefinition
+  e:\projects\waves\waves\imgui\imgui_demo.cpp(39): note: see previous definition of 'IM_NEWLINE'
+e:\projects\waves\waves\imgui\imgui_demo.cpp(2403): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  imgui.cpp
+e:\projects\waves\waves\imgui\imgui.cpp(528): warning C4627: '#include "imgui.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(528): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(530): warning C4627: '#include "imgui_internal.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(530): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(532): warning C4627: '#include <ctype.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(532): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(533): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(533): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(534): warning C4627: '#include <stdlib.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(534): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(536): warning C4627: '#include <new>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(536): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(538): warning C4627: '#include <stddef.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(538): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(540): warning C4627: '#include <stdint.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(540): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(793): warning C4005: 'IM_NEWLINE': macro redefinition
+  e:\projects\waves\waves\imgui\imgui.cpp(791): note: see previous definition of 'IM_NEWLINE'
+e:\projects\waves\waves\imgui\imgui.cpp(7093): warning C4627: '#include "stb_textedit.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(7093): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(9102): warning C4627: '#include <windows.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(9102): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(9181): warning C4627: '#include <imm.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(9181): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(9316): warning C4627: '#include "imgui_user.inl"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\imgui\imgui.cpp(9316): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\imgui\imgui.cpp(9321): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  GUISimControlsWindow.cpp
+e:\projects\waves\waves\guisimcontrolswindow.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Wire.cpp
+e:\projects\waves\waves\wire.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  HeatWave.cpp
+e:\projects\waves\waves\heatwave.h(6): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Node.cpp
+e:\projects\waves\waves\node.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Circuit.cpp
+e:\projects\waves\waves\wire.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...
