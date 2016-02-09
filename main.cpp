@@ -20,7 +20,11 @@ int main() {
 
 	CircuitGraph* testGraph = new CircuitGraph();
 
-	CircuitNode node1 = testGraph->createNode(1);
-	CircuitNode node2 = testGraph->createNode(5);
-	CircuitEdge edge1 = testGraph->createEdge(&node1, &node2, 2.1f);
+	CircuitNode* node1 = testGraph->createNode(1);
+	CircuitNode* node2 = testGraph->createNode(5);
+	CircuitEdge* edge1 = testGraph->createEdge(node1, node2, 2.1f);
+
+	for (unsigned i = 0; i < 10000; i++)
+		testGraph->createNode(i);
+
 }

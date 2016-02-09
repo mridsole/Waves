@@ -100,7 +100,7 @@ public:
 	~DirectedGraph() {};
 
 	template <typename... Ts>
-	Edge& createEdge(Node* _startNode, Node* _endNode, Ts&&... args) {
+	Edge* createEdge(Node* _startNode, Node* _endNode, Ts&&... args) {
 
 		if (_startNode == nullptr && _endNode == nullptr)
 			throw std::invalid_argument("Error creating edge: both node pointers cannot be null.");
@@ -116,17 +116,31 @@ public:
 		if (_endNode != nullptr)
 			_endNode->connections.emplace_back(edge, _endNode, false);
 
-		return *edge;
+		return edge;
 	}
 
-	Node& createNode(NodeT args) {
+	Node* createNode(NodeT args) {
 
 		this->nodes.emplace_back(args);
 		DirectedGraph<EdgeT, NodeT>::Node* node = &(*(this->nodes.end() - 1));
 
-		return *node;
+		return node;
 	}
 
+	// TODO: implement these
+	bool deleteEdge(Edge* edge) {
+
+		if (edge == nullptr)
+			return false;
+
+		
+	}
+
+	// are we storing this edge?
+	bool hasEdge(Edge* edge) {
+
+
+	}
 
 	// node centric - store a list of all the nodes
 	Nodes nodes;
