@@ -151,7 +151,6 @@
   <ItemGroup>
     <ClInclude Include="Circuit.h" />
     <ClInclude Include="CircuitGraph.h" />
-    <ClInclude Include="dgold.h" />
     <ClInclude Include="DirectedGraph.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="FrameUpdateDispatcher.h" />
