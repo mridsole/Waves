@@ -4,7 +4,7 @@
 
 #include "SimWire.h"
 
-namespace sim {
+namespace hwsim {
 
 // configuration options for nodes
 

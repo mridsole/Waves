@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-using namespace sim;
+using namespace hwsim;
 
 SimWire::SimWire():
 	_bcNodeStart(nullptr),
@@ -72,6 +72,9 @@ void SimWire::update(float dt) {
 
 		wave_next[i] = std::pow(dt, 2) * wave_tt + 2 * wave[i] - wave_previous[i];
 	}
+
+	// we should store the 'energy lost' differential due to damping
+	// so we can turn it into heat -> conserve energy
 
 	// update the non-boundary heat bits
 	for (unsigned int i = 1; i < this->_config.nx - 1; i++) {

@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace sim {
+namespace hwsim {
 
 // forward declaration of enum WireEnd
 enum class WireEnd;
@@ -131,6 +131,9 @@ private:
 
 	std::vector<std::vector<float>> _heat_x;
 	std::vector<std::vector<float>> _heat_xx;
+	
+	// store the 'damping energy differential' - energy lost due to damping
+
 	
 	// what's the index of the 'current' timestep?
 	unsigned int _currentTimestepIndex;

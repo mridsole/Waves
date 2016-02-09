@@ -3,7 +3,9 @@
 
 #include <assert.h>
 
-using namespace sim;
+#include <stdio.h>
+
+using namespace hwsim;
 
 SimController::SimController(SimConfig config)
 {

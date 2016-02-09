@@ -3,7 +3,7 @@
 #include "SimWire.h"
 #include "SimNode.h"
 
-namespace sim {
+namespace hwsim {
 
 // stores various simulation parameters - dt, etc
 struct SimConfig {
