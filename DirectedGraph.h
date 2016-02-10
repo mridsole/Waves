@@ -1,153 +1,127 @@
 #include <vector>
+#include <array>
 #include <stdexcept>
+#include "assert.h"
 
 // debugging
 #include "stdio.h"
 
 // directed graph
-namespace graph {
+namespace dirgraph {
 
-template <typename EdgeT, typename NodeT>
-class DirectedGraph
+template <typename EdgeT, typename VertexT>
+struct Edge;
+
+template <typename EdgeT, typename VertexT>
+struct Vertex;
+
+// try something a little bit simpler
+template <typename EdgeT, typename VertexT>
+struct Edge 
 {
+	Vertex<EdgeT, VertexT>& startVertex;
+	Vertex<EdgeT, VertexT>& endVertex;
 
-public:
+	EdgeT data;
 
-	// forward declarations
-	struct Edge;
-	struct Node;
-
-	struct Connection
-	{
-		Edge* edge;
-		Node* node;
-		bool end;
-
-		Connection(Edge* _edge, Node* _node, bool _end) :
-			edge(_edge),
-			node(_node),
-			end(_end)
-		{};
-	};
-
-	using Connections = std::vector<Connection>;
-	using Edges = std::vector<Edge*>;
-	using Nodes = std::vector<Node*>;
-
-	// actual implementations
-	struct Edge
-	{
-		friend class DirectedGraph;
-
-		Node* startNode;
-		Node* endNode;
-		EdgeT data;
-
-		// can only be constructed by DirectedGraph::createEdge
-		//private:
-
-		template <typename... Ts>
-		Edge(Node* _startNode, Node* _endNode, Ts&&... args) :
-			startNode(_startNode),
-			endNode(_endNode),
-			data(args...)
-		{};
-
-		// copy constructors
-		Edge(Edge&& rhs) :
-			startNode(rhs.startNode),
-			endNode(rhs.endNode),
-			data(rhs.data)
-		{};
-
-		Edge(Edge& rhs) :
-			startNode(rhs.startNode),
-			endNode(rhs.endNode),
-			data(rhs.data)
-		{};
-
-		~Edge() {};
-	};
-
-	struct Node
-	{
-		friend class DirectedGraph;
-
-		Connections connections;
-		NodeT data;
-
-		template <typename... Ts>
-		Node(Ts&&... args) :
-			data(args...)
-		{};
-
-		// copy constructors - need these to avoid obscure errors!
-		Node(Node&& rhs) :
-			connections(rhs.connections),
-			data(rhs.data)
-		{};
-
-		Node(Node& rhs) :
-			connections(rhs.connections),
-			data(rhs.data)
-		{};
-
-		~Node() {};
-	};
-
-	// DirectedGraph stuff
-	DirectedGraph() {};
-	~DirectedGraph() {};
-
+	// allow initialization of the data
 	template <typename... Ts>
-	Edge* createEdge(Node* _startNode, Node* _endNode, Ts&&... args) {
+	Edge(Vertex<EdgeT, VertexT>& _startVertex,
+		Vertex<EdgeT, VertexT>& _endVertex,
+		Ts&&... dataArgs) :
+		startVertex(_startVertex),
+		endVertex(_endVertex),
+		data(dataArgs...)
+	{
+		setVertex(_startVertex, false);
+		setVertex(_endVertex, true);
+	};
 
-		if (_startNode == nullptr && _endNode == nullptr)
-			throw std::invalid_argument("Error creating edge: both node pointers cannot be null.");
-
-		// in the future, maybe use a memory pool
-		Edge* edge = new Edge(_startNode, _endNode, args...);
-		this->edges.push_back(edge);
-
-		// give the pointer to our nodes
-		if (_startNode != nullptr)
-			_startNode->connections.emplace_back(edge, _startNode, false);
-
-		if (_endNode != nullptr)
-			_endNode->connections.emplace_back(edge, _endNode, false);
-
-		return edge;
-	}
-
+	// explicitly define some other ctors
 	template <typename... Ts>
-	Node* createNode(Ts&&... args) {
+	Edge(Vertex<EdgeT, VertexT>&& _startVertex,
+		Vertex<EdgeT, VertexT>&& _endVertex,
+		Ts&&... dataArgs) :
+		startVertex(_startVertex),
+		endVertex(_endVertex),
+		data(dataArgs...)
+	{
+		setVertex(_startVertex, false);
+		setVertex(_endVertex, true);
+	};
 
-		Node* node = new Node(args...);
-		this->nodes.push_back(node);
+	Edge(Vertex<EdgeT, VertexT>&& _startVertex,
+		Vertex<EdgeT, VertexT>&& _endVertex) :
+		startVertex(_startVertex),
+		endVertex(_endVertex)
+	{
+		setVertex(_startVertex, false);
+		setVertex(_endVertex, true);
+	};
 
-		return node;
-	}
+	// really, this shouldn't get called
+	template <typename... Ts>
+	Edge(Edge&& rhs) : 
+		startVertex(rhs.startVertex), endVertex(rhs.endVertex), data(rhs.data) 
+	{
+		assert(false);
+	};
 
-	// TODO: implement these
-	bool deleteEdge(Edge* edge) {
-
-		if (edge == nullptr)
-			return false;
-
+	
+	~Edge() {
 		
+	};
+
+private:
+
+	friend struct Vertex<EdgeT, VertexT>;
+	
+	// store the start and end indices for constant time removal
+	size_t startIndex;
+	size_t endIndex;
+
+	void setVertex(Vertex<EdgeT, VertexT>& vertex, bool end) {
+		
+		// after pushing back the size can't be 0 so this is safe
+		vertex.edges.push_back(this);
+		if (end)
+			startIndex = vertex.edges.size() - 1;
+		else
+			endIndex = vertex.edges.size() - 1;
 	}
-
-	// are we storing this edge?
-	bool hasEdge(Edge* edge) {
+};
 
 
-	}
-
-	// node centric - store a list of all the nodes
-	Nodes nodes;
-
-	// might as well store some edges too
+template <typename EdgeT, typename VertexT>
+struct Vertex
+{
+	using Edges = std::vector<Edge<EdgeT, VertexT>*>;
 	Edges edges;
+
+	VertexT data;
+
+	// allow initialization of the data
+	template <typename... Ts>
+	Vertex(Ts&&... dataArgs) :
+		edges(),
+		data(dataArgs...)
+	{};
+
+	// explicitly define some other ctors to make sure resolution works
+	Vertex() : edges(), data() {};
+	Vertex(Vertex&& rhs) : edges(rhs.edges), data(rhs.data) {};
+	Vertex(Vertex& rhs) : edges(rhs.edges), data(rhs.data) {};
+
+	// delete this node
+	~Vertex() {
+
+		// remove all our connected edges backwards through the list
+		for (auto it = edges.begin(); it < edges.end(); it++) {
+			delete *it;
+		}
+	};
+
+	friend struct Edge<EdgeT, VertexT>;
 };
 
 };

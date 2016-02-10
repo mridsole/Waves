@@ -11,20 +11,19 @@ using namespace hwgame;
 
 #include "stdio.h"
 
-using CircuitGraph = graph::DirectedGraph<float, int>;
-using CircuitEdge = CircuitGraph::Edge;
-using CircuitNode = CircuitGraph::Node;
+using CircuitEdge = dirgraph::Edge<float, int>;
+using CircuitNode = dirgraph::Vertex<float, int>;
+
+struct CircuitEdgeData 
+{
+	
+};
 
 // program entry
 int main() {
 
-	CircuitGraph* testGraph = new CircuitGraph();
+	CircuitNode* node1 = new CircuitNode(1);
+	CircuitNode* node2 = new CircuitNode(5);
 
-	CircuitNode* node1 = testGraph->createNode(1);
-	CircuitNode* node2 = testGraph->createNode(5);
-	CircuitEdge* edge1 = testGraph->createEdge(node1, node2, 2.1f);
-
-	for (unsigned i = 0; i < 10000; i++)
-		testGraph->createNode(i);
-
+	CircuitEdge* edge1 = new CircuitEdge(*node1, *node2, 10.5f);
 }
