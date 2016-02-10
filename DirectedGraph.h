@@ -15,6 +15,28 @@ struct Edge;
 template <typename EdgeT, typename VertexT>
 struct Vertex;
 
+// EdgeT and VertexT must inherit from these! this is so that
+// the data has access to the graph itself
+template <typename EdgeT, typename VertexT>
+struct EdgeData
+{
+	Edge<EdgeT, VertexT>* edge;
+
+	EdgeData(Edge<EdgeT, VertexT>* _edge) :
+		edge(_edge)
+	{};
+};
+
+template <typename EdgeT, typename VertexT>
+struct VertexData
+{
+	Vertex<EdgeT, VertexT>* vertex;
+
+	VertexData(Vertex<EdgeT, VertexT>* _vertex) :
+		vertex(_vertex)
+	{};
+};
+
 // try something a little bit simpler
 template <typename EdgeT, typename VertexT>
 struct Edge 
@@ -31,7 +53,7 @@ struct Edge
 		Ts&&... dataArgs) :
 		startVertex(_startVertex),
 		endVertex(_endVertex),
-		data(dataArgs...)
+		data(this, dataArgs...)
 	{
 		setVertex(_startVertex, false);
 		setVertex(_endVertex, true);
@@ -44,7 +66,7 @@ struct Edge
 		Ts&&... dataArgs) :
 		startVertex(_startVertex),
 		endVertex(_endVertex),
-		data(dataArgs...)
+		data(this, dataArgs...)
 	{
 		setVertex(_startVertex, false);
 		setVertex(_endVertex, true);
@@ -53,7 +75,8 @@ struct Edge
 	Edge(Vertex<EdgeT, VertexT>&& _startVertex,
 		Vertex<EdgeT, VertexT>&& _endVertex) :
 		startVertex(_startVertex),
-		endVertex(_endVertex)
+		endVertex(_endVertex),
+		data(this)
 	{
 		setVertex(_startVertex, false);
 		setVertex(_endVertex, true);
@@ -104,11 +127,12 @@ struct Vertex
 	template <typename... Ts>
 	Vertex(Ts&&... dataArgs) :
 		edges(),
-		data(dataArgs...)
-	{};
+		data(this, dataArgs...)
+	{
+	};
 
 	// explicitly define some other ctors to make sure resolution works
-	Vertex() : edges(), data() {};
+	Vertex() : edges(), data(this) {};
 	Vertex(Vertex&& rhs) : edges(rhs.edges), data(rhs.data) {};
 	Vertex(Vertex& rhs) : edges(rhs.edges), data(rhs.data) {};
 
