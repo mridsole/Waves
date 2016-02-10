@@ -13,5 +13,9 @@
 // program entry
 int main() {
 
-	UnitTest::RunAllTests();
+	// run the game
+	HeatWave* game = new HeatWave();
+	game->start();
+
+	return 0;
 }
