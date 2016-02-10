@@ -31,8 +31,8 @@ public:
 	};
 
 	using Connections = std::vector<Connection>;
-	using Edges = std::vector<Edge>;
-	using Nodes = std::vector<Node>;
+	using Edges = std::vector<Edge*>;
+	using Nodes = std::vector<Node*>;
 
 	// actual implementations
 	struct Edge
@@ -105,9 +105,9 @@ public:
 		if (_startNode == nullptr && _endNode == nullptr)
 			throw std::invalid_argument("Error creating edge: both node pointers cannot be null.");
 
-		// create the edge in place in our edges vector, then get a pointer to it
-		this->edges.emplace_back(_startNode, _endNode, args...);
-		Edge* edge = &(*(this->edges.end() - 1));
+		// in the future, maybe use a memory pool
+		Edge* edge = new Edge(_startNode, _endNode, args...);
+		this->edges.push_back(edge);
 
 		// give the pointer to our nodes
 		if (_startNode != nullptr)
@@ -119,10 +119,11 @@ public:
 		return edge;
 	}
 
-	Node* createNode(NodeT args) {
+	template <typename... Ts>
+	Node* createNode(Ts&&... args) {
 
-		this->nodes.emplace_back(args);
-		DirectedGraph<EdgeT, NodeT>::Node* node = &(*(this->nodes.end() - 1));
+		Node* node = new Node(args...);
+		this->nodes.push_back(node);
 
 		return node;
 	}
