@@ -1,1 +1,11 @@
-﻿  Waves.vcxproj -> E:\projects\Waves\Debug\Waves.exe
+﻿  Circuit.cpp
+  Generating Code...
+  Compiling...
+  Wire.cpp
+  SimWire.cpp
+  SimNode.cpp
+  SimController.cpp
+  Node.cpp
+  HeatWave.cpp
+  Generating Code...
+  Waves.vcxproj -> E:\projects\Waves\Debug\Waves.exe

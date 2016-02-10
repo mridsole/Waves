@@ -7,6 +7,7 @@ namespace hwsim {
 // forward declaration of enum WireEnd
 enum class WireEnd;
 
+// forward declaration for 
 class SimWire;
 
 // struct containing configuration options used in wire initialization
