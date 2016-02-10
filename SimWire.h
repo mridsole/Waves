@@ -25,7 +25,7 @@ struct SimNodeVertex;
 struct SimWireEdge
 {
 	SimWireEdge() {};
-	virtual ~SimWireEdge() = 0;
+	virtual ~SimWireEdge() {};
 
 	virtual SimNodeVertex& getStartNode() = 0;
 	virtual SimNodeVertex& getEndNode() = 0;
@@ -37,9 +37,9 @@ struct SimNodeVertex
 	using Edges = std::vector<SimWireEdge*>;
 
 	SimNodeVertex() {};
-	virtual ~SimNodeVertex() = 0;
+	virtual ~SimNodeVertex() {};
 
-	virtual Edges& edges();
+	virtual Edges& getEdges() = 0;
 };
 
 // class for the simulation representation of a wire, 

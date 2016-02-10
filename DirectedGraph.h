@@ -119,8 +119,8 @@ template <typename EdgeT, typename VertexT>
 struct Vertex
 {
 	using Edges = std::vector<Edge<EdgeT, VertexT>*>;
-	Edges edges;
 
+	Edges edges;
 	VertexT data;
 
 	// allow initialization of the data

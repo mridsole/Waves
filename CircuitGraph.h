@@ -20,45 +20,27 @@ using CircuitVertexDataBase = dirgraph::VertexData<CircuitEdgeData, CircuitVerte
 
 struct CircuitEdgeData : public CircuitEdgeDataBase, public hwsim::SimWireEdge
 {
-	// some testing data
-	float x;
-	float y;
-
 	// the simulation data for this wire
 	hwsim::SimWire* simWire;
 
-	CircuitEdgeData(CircuitEdge* _thisEdge, float _x, float _y) :
-		CircuitEdgeDataBase::EdgeData(_thisEdge),
-		x(_x), y(_y)
+	CircuitEdgeData(CircuitEdge* _thisEdge) :
+		CircuitEdgeDataBase::EdgeData(_thisEdge)
 	{};
 
 	// satisfy SimWireEdge
-	hwsim::SimNodeVertex& getStartNode() { return edge->startVertex.data; };
-	hwsim::SimNodeVertex& getEndNode() { return edge->endVertex.data; };
-	hwsim::SimWire* getSimWire() { return simWire; };
+	hwsim::SimNodeVertex& getStartNode();
+	hwsim::SimNodeVertex& getEndNode();
+	hwsim::SimWire* getSimWire();
 };
 
 struct CircuitVertexData : public CircuitVertexDataBase, public hwsim::SimNodeVertex
 {
-	float z;
-
-	CircuitVertexData(CircuitVertex* _thisVertex, float _z) :
-		CircuitVertexDataBase::VertexData(_thisVertex),
-		z(_z)
+	CircuitVertexData(CircuitVertex* _thisVertex) :
+		CircuitVertexDataBase::VertexData(_thisVertex)
 	{};
 
 	// satisfy SimNodeVertex
-	virtual Edges& edges() {
-
-		// we have an std::vector<Node*>
-		
-		edgesBuffer.resize(0);
-		for (auto it = vertex->edges.begin(); it < vertex->edges.end(); it++) {
-			edgesBuffer.push_back(&((*it)->data));
-		}
-
-		return edgesBuffer;
-	};
+	virtual Edges& getEdges();
 
 private:
 
