@@ -6,13 +6,6 @@
 #include "CircuitGraph.h"
 #include "SimWire.h"
 
-
-// well, for now let's just try a sanity test
-TEST(Sanity)
-{
-	CHECK_EQUAL(1, 1);
-}
-
 SUITE(CircuitGraph) {
 
 	TEST(GraphValidity) {
