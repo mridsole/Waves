@@ -21,9 +21,9 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B3C95EAA-1263-4A53-B6E9-08B985232C25}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>RocketSurgery</RootNamespace>
+    <RootNamespace>Heatwave</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Waves</ProjectName>
+    <ProjectName>Heatwave</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -156,6 +156,35 @@
     <ClInclude Include="FrameUpdateDispatcher.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="HeatWave.h" />
+    <ClInclude Include="UnitTest++\AssertException.h" />
+    <ClInclude Include="UnitTest++\CheckMacros.h" />
+    <ClInclude Include="UnitTest++\Checks.h" />
+    <ClInclude Include="UnitTest++\CompositeTestReporter.h" />
+    <ClInclude Include="UnitTest++\Config.h" />
+    <ClInclude Include="UnitTest++\CurrentTest.h" />
+    <ClInclude Include="UnitTest++\DeferredTestReporter.h" />
+    <ClInclude Include="UnitTest++\DeferredTestResult.h" />
+    <ClInclude Include="UnitTest++\ExceptionMacros.h" />
+    <ClInclude Include="UnitTest++\ExecuteTest.h" />
+    <ClInclude Include="UnitTest++\HelperMacros.h" />
+    <ClInclude Include="UnitTest++\MemoryOutStream.h" />
+    <ClInclude Include="UnitTest++\ReportAssert.h" />
+    <ClInclude Include="UnitTest++\ReportAssertImpl.h" />
+    <ClInclude Include="UnitTest++\Test.h" />
+    <ClInclude Include="UnitTest++\TestDetails.h" />
+    <ClInclude Include="UnitTest++\TestList.h" />
+    <ClInclude Include="UnitTest++\TestMacros.h" />
+    <ClInclude Include="UnitTest++\TestReporter.h" />
+    <ClInclude Include="UnitTest++\TestReporterStdout.h" />
+    <ClInclude Include="UnitTest++\TestResults.h" />
+    <ClInclude Include="UnitTest++\TestRunner.h" />
+    <ClInclude Include="UnitTest++\TestSuite.h" />
+    <ClInclude Include="UnitTest++\TimeConstraint.h" />
+    <ClInclude Include="UnitTest++\TimeHelpers.h" />
+    <ClInclude Include="UnitTest++\UnitTest++.h" />
+    <ClInclude Include="UnitTest++\UnitTestPP.h" />
+    <ClInclude Include="UnitTest++\Win32\TimeHelpers.h" />
+    <ClInclude Include="UnitTest++\XmlTestReporter.h" />
     <ClInclude Include="Wire.h" />
     <ClInclude Include="GUISimControlsWindow.h" />
     <ClInclude Include="imgui\examples\ios_example\imguiex\GameViewController.h" />
@@ -180,6 +209,78 @@
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="HeatWave.cpp" />
+    <ClCompile Include="UnitTest++\AssertException.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\Checks.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\CompositeTestReporter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\CurrentTest.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\DeferredTestReporter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\DeferredTestResult.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\MemoryOutStream.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\ReportAssert.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\Test.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestDetails.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestList.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestReporter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestReporterStdout.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestResults.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TestRunner.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\TimeConstraint.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\Win32\TimeHelpers.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UnitTest++\XmlTestReporter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Wire.cpp" />
     <ClCompile Include="GUISimControlsWindow.cpp" />
     <ClCompile Include="imgui\imgui.cpp">
