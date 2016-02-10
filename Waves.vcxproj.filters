@@ -287,5 +287,8 @@
     <ClCompile Include="UnitTest++\XmlTestReporter.cpp">
       <Filter>Source Files\UnitTest++</Filter>
     </ClCompile>
+    <ClCompile Include="TestCircuitGraph.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
