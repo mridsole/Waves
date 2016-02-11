@@ -8,12 +8,12 @@ using namespace hwgame;
 
 hwsim::SimNodeVertex& CircuitEdgeData::getStartNode() { 
 	
-	return edge->startVertex.data; 
+	return edge->startVertex->data; 
 };
 
 hwsim::SimNodeVertex& CircuitEdgeData::getEndNode() { 
 	
-	return edge->endVertex.data; 
+	return edge->endVertex->data;
 };
 
 hwsim::SimWire* CircuitEdgeData::getSimWire() {

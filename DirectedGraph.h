@@ -41,15 +41,15 @@ struct VertexData
 template <typename EdgeT, typename VertexT>
 struct Edge 
 {
-	Vertex<EdgeT, VertexT>& startVertex;
-	Vertex<EdgeT, VertexT>& endVertex;
+	Vertex<EdgeT, VertexT>* startVertex;
+	Vertex<EdgeT, VertexT>* endVertex;
 
 	EdgeT data;
 
 	// allow initialization of the data
 	template <typename... Ts>
-	Edge(Vertex<EdgeT, VertexT>& _startVertex,
-		Vertex<EdgeT, VertexT>& _endVertex,
+	Edge(Vertex<EdgeT, VertexT>* _startVertex,
+		Vertex<EdgeT, VertexT>* _endVertex,
 		Ts&&... dataArgs) :
 		startVertex(_startVertex),
 		endVertex(_endVertex),
@@ -60,7 +60,7 @@ struct Edge
 	};
 
 	// explicitly define some other ctors
-	template <typename... Ts>
+	/*template <typename... Ts>
 	Edge(Vertex<EdgeT, VertexT>&& _startVertex,
 		Vertex<EdgeT, VertexT>&& _endVertex,
 		Ts&&... dataArgs) :
@@ -80,7 +80,7 @@ struct Edge
 	{
 		setVertex(_startVertex, false);
 		setVertex(_endVertex, true);
-	};
+	};*/
 
 	// really, this shouldn't get called
 	template <typename... Ts>
@@ -90,9 +90,13 @@ struct Edge
 		assert(false);
 	};
 
-	// WHAT
 	~Edge() {
 		
+		if (startVertex != nullptr)
+			startVertex->removeEdge(this);
+
+		if (endVertex != nullptr)
+			endVertex->removeEdge(this);
 	};
 
 private:
@@ -103,14 +107,14 @@ private:
 	size_t startIndex;
 	size_t endIndex;
 
-	void setVertex(Vertex<EdgeT, VertexT>& vertex, bool end) {
+	void setVertex(Vertex<EdgeT, VertexT>* vertex, bool end) {
 		
 		// after pushing back the size can't be 0 so this is safe
-		vertex.edges.push_back(this);
+		vertex->edges.push_back(this);
 		if (end)
-			startIndex = vertex.edges.size() - 1;
+			startIndex = vertex->edges.size() - 1;
 		else
-			endIndex = vertex.edges.size() - 1;
+			endIndex = vertex->edges.size() - 1;
 	}
 };
 
@@ -139,13 +143,41 @@ struct Vertex
 	// delete this node
 	~Vertex() {
 
-		// remove all our connected edges backwards through the list
-		for (auto it = edges.begin(); it < edges.end(); it++) {
-			
+		auto it = edges.begin();
+		while (it < edges.end()) {
+
 			Edge<EdgeT, VertexT>* edge = *it;
+			it = edges.erase(it);
+
+			// before deleting it, set it's vertices to nullptr,
+			// flagging that it doesn't need to do a linear search
+			// to delete itself
+			if (edge->startVertex == this)
+				edge->startVertex = nullptr;
+
+			if (edge->endVertex == this)
+				edge->endVertex = nullptr;
+
 			delete edge;
 		}
 	};
+
+	bool removeEdge(Edge<EdgeT, VertexT>* edge) {
+
+		if (edge == nullptr)
+			return false;
+
+		for (auto it = edges.begin(); it < edges.end(); it++) {
+
+			if (*it == edge) {
+
+				edges.erase(it);
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	friend struct Edge<EdgeT, VertexT>;
 };

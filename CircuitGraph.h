@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SimGraphInterface.h"
 #include "SimWire.h"
 #include "SimNode.h"
 #include "DirectedGraph.h"

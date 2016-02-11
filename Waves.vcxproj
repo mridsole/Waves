@@ -217,6 +217,7 @@
     <ClInclude Include="FrameUpdateDispatcher.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="HeatWave.h" />
+    <ClInclude Include="SimGraphInterface.h" />
     <ClInclude Include="UnitTest++\AssertException.h" />
     <ClInclude Include="UnitTest++\CheckMacros.h" />
     <ClInclude Include="UnitTest++\Checks.h" />

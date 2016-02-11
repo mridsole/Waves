@@ -192,6 +192,9 @@
     <ClInclude Include="UnitTest++\XmlTestReporter.h">
       <Filter>Source Files\UnitTest++</Filter>
     </ClInclude>
+    <ClInclude Include="SimGraphInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

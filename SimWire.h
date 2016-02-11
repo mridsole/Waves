@@ -18,30 +18,6 @@ struct WireConfig {
 	float dx;
 };
 
-struct SimWireEdge;
-struct SimNodeVertex;
-
-// the graph interface
-struct SimWireEdge
-{
-	SimWireEdge() {};
-	virtual ~SimWireEdge() {};
-
-	virtual SimNodeVertex& getStartNode() = 0;
-	virtual SimNodeVertex& getEndNode() = 0;
-	virtual SimWire* getSimWire() = 0;
-};
-
-struct SimNodeVertex
-{
-	using Edges = std::vector<SimWireEdge*>;
-
-	SimNodeVertex() {};
-	virtual ~SimNodeVertex() {};
-
-	virtual Edges& getEdges() = 0;
-};
-
 // class for the simulation representation of a wire, 
 // which is used for heat and wave propagation
 // do not inherit!
