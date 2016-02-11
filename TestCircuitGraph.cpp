@@ -31,7 +31,7 @@ struct CircuitGraphTestFixture {
 	~CircuitGraphTestFixture() {
 
 		// this will leak memory!
-		// but it doesn't really matter for one-off testing.
+		// but it doesn't really matter for one-off testing
 	};
 
 };
