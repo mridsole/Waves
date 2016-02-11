@@ -90,7 +90,7 @@ struct Edge
 		assert(false);
 	};
 
-	
+	// WHAT
 	~Edge() {
 		
 	};
@@ -141,7 +141,9 @@ struct Vertex
 
 		// remove all our connected edges backwards through the list
 		for (auto it = edges.begin(); it < edges.end(); it++) {
-			delete *it;
+			
+			Edge<EdgeT, VertexT>* edge = *it;
+			delete edge;
 		}
 	};
 

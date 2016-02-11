@@ -44,6 +44,7 @@ struct CircuitVertexData : public CircuitVertexDataBase, public hwsim::SimNodeVe
 
 private:
 
+	// getEdges implementation
 	Edges edgesBuffer;
 };
 
