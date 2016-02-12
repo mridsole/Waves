@@ -23,19 +23,15 @@ class SimNode
 	friend class SimWire;
 	friend class SimController;
 
-private:
-
+public:
+	
 	SimNode();
 	~SimNode();
-
-public:
 
 	// update the value at the boundary for all connected wires
 	// must be called AFTER each wire has been updated!
 	float waveBoundary(SimWire* wire, WireEnd wireEnd, float dt);
 	float heatBoundary(SimWire* wire, WireEnd wireEnd, float dt);
-
-private:
 
 	// interface into the graph structure
 	SimNodeVertex* vertex;

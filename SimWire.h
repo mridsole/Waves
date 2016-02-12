@@ -26,15 +26,12 @@ class SimWire
 
 	friend class SimNode;
 	friend class SimController;
-	
-private:
 
-	// can (should) only be created by SimController!
+public:
+
 	SimWire();
 	SimWire(const WireConfig& config);
 	~SimWire();
-
-public:
 
 	// updates one timestep for both wave and heat
 	void update(float dt);
@@ -86,6 +83,9 @@ public:
 	// is the config valid?
 	bool isConfigValid() const;
 
+	// the corresponding SimWireEdge graph interface
+	SimWireEdge* edge;
+
 private:
 
 	// compute wave spatial and temporal derivatives
@@ -127,9 +127,6 @@ private:
 	std::vector<std::vector<float>> _heat_xx;
 	
 	// store the 'damping energy differential' - energy lost due to damping
-
-	// the corresponding SimWireEdge graph interface
-	SimWireEdge* edge;
 	
 	// what's the index of the 'current' timestep?
 	unsigned int _currentTimestepIndex;

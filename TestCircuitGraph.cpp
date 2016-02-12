@@ -36,7 +36,6 @@ struct CircuitGraphTestFixture {
 
 };
 
-
 SUITE(CircuitGraph) {
 
 	TEST_FIXTURE(CircuitGraphTestFixture, GraphValidity) {

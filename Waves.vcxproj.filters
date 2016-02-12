@@ -192,6 +192,9 @@
     <ClInclude Include="SimGraphInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SimController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -290,10 +293,13 @@
     <ClCompile Include="CircuitGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestSimGraphInterface.cpp">
+    <ClCompile Include="TestCircuitGraph.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
-    <ClCompile Include="TestCircuitGraph.cpp">
+    <ClCompile Include="SimController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestSim.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
   </ItemGroup>
