@@ -88,5 +88,7 @@ SUITE(Sim) {
 		edge1->data.simWire->update(dt);
 		edge2->data.simWire->update(dt);
 		edge3->data.simWire->update(dt);
+
+		// ADD CHECKS HERE LATER
 	}
 }

@@ -89,6 +89,134 @@ void SimWire::update(float dt) {
 	this->_updateTemporalIndex();
 }
 
+bool SimWire::initialize(const Config& config, const InitState& initState, float dt) {
+
+	// config set + validate
+	if (!this->setConfig(config))
+		return false;
+
+	// references from struct
+	const auto& initWave = *initState.initWave;
+	const auto& initWaveVelocity = *initState.initWaveVelocity;
+	const auto& initHeat = *initState.initHeat;
+	const auto& waveSpeed = *initState.waveSpeed;
+	const auto& damping	= *initState.damping;
+	const auto& diffusivity = *initState.diffusivity;
+
+	// check the dimensions of everything
+	assert(this->_config.nx == initWave.size());
+	assert(this->_config.nx == initWaveVelocity.size());
+	assert(this->_config.nx == initHeat.size());
+
+	// check dimensions of wire properties
+	assert(this->_config.nx == waveSpeed.size());
+	assert(this->_config.nx == damping.size());
+	assert(this->_config.nx == diffusivity.size());
+
+	// values look okay, start storing stuff
+	this->_config.nx = config.nx;
+	this->_config.storeTimesteps = config.storeTimesteps;
+	this->_config.dx = config.dx;
+
+	// resize wire property storage and store the new stuff
+	this->_waveSpeed.resize(this->_config.nx);
+	this->_damping.resize(this->_config.nx);
+	this->_diffusivity.resize(this->_config.nx);
+
+	for (unsigned i = 0; i < this->_config.nx; i++) {
+
+		this->_waveSpeed[i] = waveSpeed[i];
+		this->_damping[i] = damping[i];
+		this->_diffusivity[i] = diffusivity[i];
+	}
+
+	// resize internal storage
+
+	// wave magnitude
+	this->_wave.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_wave.size(); i++) {
+		this->_wave[i].resize(this->_config.nx);
+	}
+
+	// heat magnitude
+	this->_heat.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_heat.size(); i++) {
+		this->_heat[i].resize(this->_config.nx);
+	}
+
+	// wave magnitude time derivative
+	this->_wave_t.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_wave_t.size(); i++) {
+		this->_wave_t[i].resize(this->_config.nx);
+	}
+
+	// wave magnitude space derivative
+	this->_wave_x.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_wave_x.size(); i++) {
+		this->_wave_x[i].resize(this->_config.nx - 1);
+	}
+
+	// second wave magnitude space derivative
+	this->_wave_xx.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_wave_xx.size(); i++) {
+		this->_wave_xx[i].resize(this->_config.nx - 2);
+	}
+
+	// heat magnitude space derivative
+	this->_heat_x.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_heat_x.size(); i++) {
+		this->_heat_x[i].resize(this->_config.nx - 1);
+	}
+
+	// second heat magnitude space derivative
+	this->_heat_xx.resize(this->_config.storeTimesteps);
+	for (unsigned i = 0; i < this->_heat_xx.size(); i++) {
+		this->_heat_xx[i].resize(this->_config.nx - 2);
+	}
+
+	// reset circular buffer position
+	this->_currentTimestepIndex = 0;
+
+	// set the given initial state
+	auto& _wave_current = this->_wave[this->_currentTimestepIndex];
+	auto& _heat_current = this->_heat[this->_currentTimestepIndex];
+	auto& _wave_next = this->_wave[(this->_currentTimestepIndex + 1) % this->_config.storeTimesteps];
+	auto& _heat_next = this->_heat[(this->_currentTimestepIndex + 1) % this->_config.storeTimesteps];
+
+	for (unsigned i = 0; i < this->_config.nx; i++) {
+
+		// set initial wave and heat state
+		_wave_current[i] = initWave[i];
+		_heat_current[i] = initHeat[i];
+
+		// use velocity information to fill the next timestep
+		_wave_next[i] = initWave[i] + initWaveVelocity[i] * dt;
+
+		// this isn't really valid - but just set the next heat step
+		// to the current heat step (we have to do this because at this 
+		// point in time we don't have boundary condition info)
+		_heat_next[i] = _heat_current[i];
+	}
+
+	// might as well compute some derivatives while we're here
+	this->_computeWaveDerivatives(dt);
+	this->_computeHeatDerivatives(dt);
+
+	// update the wave boundaries - trusting that our node pointers aren't null!
+	_updateWaveBoundaries(_wave_next, dt);
+
+	// update the heat boundaries
+	_updateHeatBoundaries(_heat_next, dt);
+
+	// update indices
+	this->_updateTemporalIndex();
+
+	// we're done!
+	this->_isInitialized = true;
+
+	return true;
+}
+
 // hnnng
 bool SimWire::initialize(const Config& config,
 	std::vector<float>& initWave,

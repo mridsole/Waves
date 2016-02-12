@@ -59,6 +59,8 @@ public:
 	// updates one timestep for both wave and heat
 	void update(float dt);
 
+	bool initialize(const Config& config, const InitState& initState, float dt);
+
 	// initialize the wire, given initial wave and wave velocity and given initial heat
 	bool initialize(const Config& config, std::vector<float>& initWave,
 		std::vector<float>& initWaveVelocity,
