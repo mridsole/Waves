@@ -1,10 +1,11 @@
 #pragma once
 
 #include <vector>
-#include "SimWire.h"
-#include "SimNode.h"
 
 namespace hwsim {
+
+class SimWire;
+class SimNode;
 
 struct SimWireEdge;
 struct SimNodeVertex;

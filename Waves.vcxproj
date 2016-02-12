@@ -261,7 +261,6 @@
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
     <ClInclude Include="PolygonUtils.h" />
-    <ClInclude Include="SimController.h" />
     <ClInclude Include="SimNode.h" />
     <ClInclude Include="SimWire.h" />
     <ClInclude Include="stdafx.h" />
@@ -389,7 +388,6 @@
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tests|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SimController.cpp" />
     <ClCompile Include="SimNode.cpp" />
     <ClCompile Include="SimWire.cpp" />
     <ClCompile Include="stdafx.cpp">

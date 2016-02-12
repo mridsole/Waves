@@ -6,9 +6,6 @@
 #include "CircuitGraph.h"
 #include "SimGraphInterface.h"
 
-#include "SimWire.h"
-#include "SimNode.h"
-
 using namespace hwgame;
 
 struct SimGraphInterfaceTestFixture {
