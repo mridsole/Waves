@@ -24,14 +24,24 @@ struct CircuitEdgeData : public CircuitEdgeDataBase, public hwsim::SimWireEdge
 	// the simulation data for this wire
 	hwsim::SimWire* simWire;
 
+	// the initialization configuration and state
+	hwsim::SimWire::Config* simWireConfig;
+	hwsim::SimWire::InitState* simWireInitState;
+
 	CircuitEdgeData(CircuitEdge* _thisEdge) :
-		CircuitEdgeDataBase::EdgeData(_thisEdge)
+		CircuitEdgeDataBase::EdgeData(_thisEdge),
+		simWire(nullptr),
+		simWireConfig(nullptr),
+		simWireInitState(nullptr)
 	{};
 
 	// satisfy SimWireEdge
 	hwsim::SimNodeVertex& getStartNode();
 	hwsim::SimNodeVertex& getEndNode();
-	hwsim::SimWire* getSimWire();
+	hwsim::SimWire* getWire();
+	void setWire(hwsim::SimWire* _wire);
+	hwsim::SimWire::Config* getWireConfig();
+	hwsim::SimWire::InitState* getInitState();
 };
 
 struct CircuitVertexData : public CircuitVertexDataBase, public hwsim::SimNodeVertex

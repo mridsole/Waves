@@ -51,7 +51,7 @@ struct SimTestFixture {
 		edge3->data.simWire->edge = &edge3->data;
 
 		// initialize the sim wires
-		hwsim::WireConfig cfg = { 3, 200, 0.01f };
+		hwsim::SimWire::Config cfg = { 3, 200, 0.01f };
 
 		// set a bunch of initial values
 		std::vector<float> zeroes(cfg.nx, 0.f);

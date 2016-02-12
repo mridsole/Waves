@@ -287,6 +287,7 @@
     <ClInclude Include="FrameUpdateDispatcher.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="HeatWave.h" />
+    <ClInclude Include="SimConstructor.h" />
     <ClInclude Include="SimController.h" />
     <ClInclude Include="SimGraphInterface.h" />
     <ClInclude Include="UnitTest++\AssertException.h" />
@@ -342,6 +343,7 @@
     <ClCompile Include="CircuitGraph.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="HeatWave.cpp" />
+    <ClCompile Include="SimConstructor.cpp" />
     <ClCompile Include="SimController.cpp" />
     <ClCompile Include="TestCircuitGraph.cpp" />
     <ClCompile Include="tests.cpp">

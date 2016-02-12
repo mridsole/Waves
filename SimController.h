@@ -12,7 +12,7 @@ struct SimConfig {
 	float dt;
 
 	// the default configuration for a wire
-	WireConfig defaultWireConfig;
+	SimWire::Config defaultWireConfig;
 
 	// the default constant initialization parameters for wires
 	struct {
@@ -44,7 +44,7 @@ public:
 
 	// create and configure a wire
 	SimWire* createConfigWire();
-	SimWire* createConfigWire(const WireConfig& config);
+	SimWire* createConfigWire(const SimWire::Config& config);
 	
 	// initialize a wire to the defaults
 	bool initToDefaultConstants(SimWire* wire);

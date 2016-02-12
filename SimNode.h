@@ -1,9 +1,12 @@
 #pragma once
 
-#include "SimGraphInterface.h"
 #include "SimWire.h"
 
 namespace hwsim {
+
+// forward declarations of graph interface
+struct SimWireEdge;
+struct SimNodeVertex;
 
 // configuration options for nodes
 
@@ -37,4 +40,4 @@ public:
 	SimNodeVertex* vertex;
 };
 
-}
+};

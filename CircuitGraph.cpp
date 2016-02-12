@@ -6,19 +6,28 @@ using namespace hwgame;
 
 // definitions for CircuitEdgeData:
 
-hwsim::SimNodeVertex& CircuitEdgeData::getStartNode() { 
-	
+hwsim::SimNodeVertex& CircuitEdgeData::getStartNode() {
 	return edge->startVertex->data; 
 };
 
-hwsim::SimNodeVertex& CircuitEdgeData::getEndNode() { 
-	
+hwsim::SimNodeVertex& CircuitEdgeData::getEndNode() {
 	return edge->endVertex->data;
 };
 
-hwsim::SimWire* CircuitEdgeData::getSimWire() {
-	
+hwsim::SimWire* CircuitEdgeData::getWire() {
 	return simWire;
+}
+
+void CircuitEdgeData::setWire(hwsim::SimWire* _wire) {
+	simWire = _wire;
+}
+
+hwsim::SimWire::Config* CircuitEdgeData::getWireConfig() {
+	return simWireConfig;
+}
+
+hwsim::SimWire::InitState* CircuitEdgeData::getInitState() {
+	return simWireInitState;
 }
 
 

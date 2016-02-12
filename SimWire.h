@@ -1,22 +1,14 @@
 #pragma once
 #include <vector>
-#include "SimGraphInterface.h"
 
 namespace hwsim {
 
 // forward declaration of enum WireEnd
 enum class WireEnd;
 
-// forward declaration for 
-class SimWire;
-
-// struct containing configuration options used in wire initialization
-struct WireConfig {
-	
-	unsigned int storeTimesteps;
-	unsigned int nx;
-	float dx;
-};
+// forward declaration for the graph interfaces
+struct SimWireEdge;
+struct SimWireVertex;
 
 // class for the simulation representation of a wire, 
 // which is used for heat and wave propagation
@@ -29,15 +21,46 @@ class SimWire
 
 public:
 
+	// struct containing configuration options used in wire initialization
+	struct Config 
+	{
+		unsigned int storeTimesteps;
+		unsigned int nx;
+		float dx;
+
+		Config(): storeTimesteps(0), nx(0), dx(0) {};
+
+		Config(unsigned int _storeTimesteps, unsigned int _nx, float _dx) :
+			storeTimesteps(_storeTimesteps), nx(_nx), dx(_dx)
+		{};
+	};
+
+	// struct containing pointers to vectors that contain the initial state
+	struct InitState 
+	{
+		// !!!: use nullptr to tell the initializer to use the 
+		// default initial state instead
+
+		std::vector<float>* initWave;
+		std::vector<float>* initWaveVelocity;
+		std::vector<float>* initHeat;
+
+		// these will probably be taken out later and put somewhere else,
+		// because they're arguably not part of the 'state'
+		std::vector<float>* waveSpeed;
+		std::vector<float>* damping;
+		std::vector<float>* diffusivity;
+	};
+
 	SimWire();
-	SimWire(const WireConfig& config);
+	SimWire(const Config& config);
 	~SimWire();
 
 	// updates one timestep for both wave and heat
 	void update(float dt);
 
 	// initialize the wire, given initial wave and wave velocity and given initial heat
-	bool initialize(const WireConfig& config, std::vector<float>& initWave,
+	bool initialize(const Config& config, std::vector<float>& initWave,
 		std::vector<float>& initWaveVelocity,
 		std::vector<float>& initHeat,
 		std::vector<float>& waveSpeed,
@@ -74,8 +97,8 @@ public:
 	unsigned int getStoreTimesteps() const;
 
 	// get/set config
-	bool setConfig(const WireConfig& config);
-	const WireConfig& getConfig() const;
+	bool setConfig(const Config& config);
+	const Config& getConfig() const;
 
 	// has this wire been initialized?
 	bool isInitialized() const;
@@ -101,7 +124,7 @@ private:
 	// update the temporal index - done at the start/very end of each sim tick
 	void _updateTemporalIndex();
 
-	WireConfig _config;
+	Config _config;
 
 	// the wave speed over the wire
 	std::vector<float> _waveSpeed;

@@ -2,6 +2,8 @@
 #include "SimWire.h"
 #include "SimNode.h"
 
+#include "SimGraphInterface.h"
+
 #include <algorithm>
 #include <cmath>
 #include <assert.h>
@@ -18,7 +20,7 @@ SimWire::SimWire():
 	
 }
 
-SimWire::SimWire(const WireConfig& config) :
+SimWire::SimWire(const Config& config) :
 	edge(nullptr),
 	_isInitialized(false),
 	_isConfigValid(false) {
@@ -88,7 +90,7 @@ void SimWire::update(float dt) {
 }
 
 // hnnng
-bool SimWire::initialize(const WireConfig& config,
+bool SimWire::initialize(const Config& config,
 	std::vector<float>& initWave,
 	std::vector<float>& initWaveVelocity, 
 	std::vector<float>& initHeat, 
@@ -393,7 +395,7 @@ unsigned int SimWire::getStoreTimesteps() const {
 	return this->_config.storeTimesteps;
 }
 
-bool SimWire::setConfig(const WireConfig& config) {
+bool SimWire::setConfig(const Config& config) {
 
 	// validation checks first
 	if (config.dx > 0.f &&
@@ -411,7 +413,7 @@ bool SimWire::setConfig(const WireConfig& config) {
 	}
 }
 
-const WireConfig& SimWire::getConfig() const {
+const SimWire::Config& SimWire::getConfig() const {
 
 	return this->_config;
 }

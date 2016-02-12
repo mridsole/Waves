@@ -47,7 +47,7 @@ SimWire* SimController::createConfigWire() {
 	return newWire;
 }
 
-SimWire* SimController::createConfigWire(const WireConfig& config) {
+SimWire* SimController::createConfigWire(const SimWire::Config& config) {
 
 	SimWire* newWire = new SimWire(config);
 	this->_wires.push_back(newWire);

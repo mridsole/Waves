@@ -1,1 +1,16 @@
-﻿  Waves.vcxproj -> E:\projects\Waves\Tests\Heatwave.exe
+﻿  SimConstructor.cpp
+  CircuitGraph.cpp
+  Generating Code...
+  Compiling...
+  SimWire.cpp
+  SimNode.cpp
+  TestSim.cpp
+  TestCircuitGraph.cpp
+  SimController.cpp
+  Node.cpp
+  Circuit.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Wire.cpp
+  HeatWave.cpp
+  Waves.vcxproj -> E:\projects\Waves\Tests\Heatwave.exe

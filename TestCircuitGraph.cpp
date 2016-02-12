@@ -79,7 +79,7 @@ SUITE(CircuitGraph) {
 		
 		CHECK(&wireEdge1->getStartNode() == (hwsim::SimNodeVertex*)(&node1->data));
 		CHECK(&wireEdge1->getEndNode() == (hwsim::SimNodeVertex*)(&node2->data));
-		CHECK(wireEdge1->getSimWire() == edge1->data.simWire);
+		CHECK(wireEdge1->getWire() == edge1->data.simWire);
 	}
 
 	TEST_FIXTURE(CircuitGraphTestFixture, SimNodeInterface) {

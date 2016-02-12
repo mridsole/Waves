@@ -1,11 +1,13 @@
 #pragma once
 
 #include <vector>
+#include "SimWire.h"
+#include "SimNode.h"
 
 namespace hwsim {
 
-class SimWire;
-class SimNode;
+//class SimWire;
+//class SimNode;
 
 struct SimWireEdge;
 struct SimNodeVertex;
@@ -15,16 +17,25 @@ struct SimNodeVertex;
 
 struct SimWireEdge
 {
+	friend class SimWire;
+	friend class SimNode;
+
 	SimWireEdge() {};
 	virtual ~SimWireEdge() {};
 
 	virtual SimNodeVertex& getStartNode() = 0;
 	virtual SimNodeVertex& getEndNode() = 0;
-	virtual SimWire* getSimWire() = 0;
+	virtual SimWire* getWire() = 0;
+	virtual void setWire(SimWire* _wire) = 0;
+	virtual SimWire::Config* getWireConfig() = 0;
+	virtual SimWire::InitState* getInitState() = 0;
 };
 
 struct SimNodeVertex
 {
+	friend class SimWire;
+	friend class SimNode;
+
 	using Edges = std::vector<SimWireEdge*>;
 
 	SimNodeVertex() {};
