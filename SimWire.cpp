@@ -11,8 +11,7 @@
 using namespace hwsim;
 
 SimWire::SimWire():
-	_bcNodeStart(nullptr),
-	_bcNodeEnd(nullptr),
+	edge(nullptr),
 	_isInitialized(false), 
 	_isConfigValid(false) {
 
@@ -20,8 +19,7 @@ SimWire::SimWire():
 }
 
 SimWire::SimWire(const WireConfig& config) :
-	_bcNodeStart(nullptr),
-	_bcNodeEnd(nullptr),
+	edge(nullptr),
 	_isInitialized(false),
 	_isConfigValid(false) {
 	
@@ -30,9 +28,6 @@ SimWire::SimWire(const WireConfig& config) :
 
 SimWire::~SimWire() {
 
-	// remove the links to both our connected nodes, if nobody did already
-	this->removeBoundaryNode(WireEnd::START);
-	this->removeBoundaryNode(WireEnd::END);
 }
 
 void SimWire::update(float dt) {
@@ -82,13 +77,11 @@ void SimWire::update(float dt) {
 		heat_next[i] = dt * this->_diffusivity[i] * heat_xx[i - 1] + heat[i];
 	}
 
-	// update the wave boundaries - trusting that our bcNode pointers aren't null
-	wave_next[0] = this->_bcNodeStart->waveBoundary(this, WireEnd::START, dt);
-	wave_next[this->_config.nx - 1] = this->_bcNodeEnd->waveBoundary(this, WireEnd::END, dt);
+	// update the wave boundaries - trusting that our node pointers aren't null!
+	_updateWaveBoundaries(wave_next, dt);
 
 	// update the heat boundaries
-	heat_next[0] = this->_bcNodeStart->heatBoundary(this, WireEnd::START, dt);
-	heat_next[this->_config.nx - 1] = this->_bcNodeEnd->heatBoundary(this, WireEnd::END, dt);
+	_updateHeatBoundaries(heat_next, dt);
 
 	// update temporal index for the next cycle
 	this->_updateTemporalIndex();
@@ -121,12 +114,12 @@ bool SimWire::initialize(const WireConfig& config,
 	assert(this->_config.nx == damping.size());
 	assert(this->_config.nx == diffusivity.size());
 
-	// values look okay, start storing things
+	// values look okay, start storing stuff
 	this->_config.nx = config.nx;
 	this->_config.storeTimesteps = config.storeTimesteps;
 	this->_config.dx = config.dx;
 
-	// resize wire property storage and store the new shit
+	// resize wire property storage and store the new stuff
 	this->_waveSpeed.resize(this->_config.nx);
 	this->_damping.resize(this->_config.nx);
 	this->_diffusivity.resize(this->_config.nx);
@@ -210,13 +203,11 @@ bool SimWire::initialize(const WireConfig& config,
 	this->_computeWaveDerivatives(dt);
 	this->_computeHeatDerivatives(dt);
 
-	// update the wave boundaries - trusting that our bcNode pointers aren't null
-	_wave_next[0] = this->_bcNodeStart->waveBoundary(this, WireEnd::START, dt);
-	_wave_next[this->_config.nx - 1] = this->_bcNodeEnd->waveBoundary(this, WireEnd::END, dt);
+	// update the wave boundaries - trusting that our node pointers aren't null!
+	_updateWaveBoundaries(_wave_next, dt);
 
 	// update the heat boundaries
-	_heat_next[0] = this->_bcNodeStart->heatBoundary(this, WireEnd::START, dt);
-	_heat_next[this->_config.nx - 1] = this->_bcNodeEnd->heatBoundary(this, WireEnd::END, dt);
+	_updateHeatBoundaries(_heat_next, dt);
 
 	// update indices
 	this->_updateTemporalIndex();
@@ -251,7 +242,7 @@ bool SimWire::initialize(std::vector<float>& initWave,
 	assert(this->_config.nx == damping.size());
 	assert(this->_config.nx == diffusivity.size());
 
-	// resize wire property storage and store the new shit
+	// resize wire property storage and store the new stuff
 	this->_waveSpeed.resize(this->_config.nx);
 	this->_damping.resize(this->_config.nx);
 	this->_diffusivity.resize(this->_config.nx);
@@ -335,13 +326,11 @@ bool SimWire::initialize(std::vector<float>& initWave,
 	this->_computeWaveDerivatives(dt);
 	this->_computeHeatDerivatives(dt);
 
-	// update the wave boundaries - trusting that our bcNode pointers aren't null
-	_wave_next[0] = this->_bcNodeStart->waveBoundary(this, WireEnd::START, dt);
-	_wave_next[this->_config.nx - 1] = this->_bcNodeEnd->waveBoundary(this, WireEnd::END, dt);
+	// update the wave boundaries - trusting that our node pointers aren't null!
+	_updateWaveBoundaries(_wave_next, dt);
 
 	// update the heat boundaries
-	_heat_next[0] = this->_bcNodeStart->heatBoundary(this, WireEnd::START, dt);
-	_heat_next[this->_config.nx - 1] = this->_bcNodeEnd->heatBoundary(this, WireEnd::END, dt);
+	_updateHeatBoundaries(_heat_next, dt);
 
 	// update indices
 	this->_updateTemporalIndex();
@@ -388,79 +377,6 @@ const std::vector<float>& SimWire::getHeatFuture() const {
 	unsigned int next_idx = (this->_currentTimestepIndex + 1) % this->_config.storeTimesteps;
 
 	return this->_heat[next_idx];
-}
-
-int SimWire::setBoundaryNode(SimNode* node, WireEnd wireEnd) {
-
-	// don't make a boo boo
-	assert(node != nullptr);
-
-	// remove the old node
-	this->removeBoundaryNode(wireEnd);
-
-	// set the new node
-	if (wireEnd == WireEnd::START) {
-		this->_bcNodeStart = node;
-	} else {
-		this->_bcNodeEnd = node;
-	}
-
-	// check if there's already a connection to this wire end
-	auto wireEndPairIt = std::find(node->_wires.begin(), node->_wires.end(),
-		std::pair<SimWire*, WireEnd>(this, wireEnd));
-
-	if (wireEndPairIt != node->_wires.end()) {
-
-		// if there is, don't do anything
-		return 1;
-	} else {
-
-		// otherwise, add the connection
-		node->_wires.push_back(std::pair<SimWire*, WireEnd>(this, wireEnd));
-		return 0;
-	}
-}
-
-SimNode* SimWire::getBoundaryNode(WireEnd wireEnd) {
-
-	// no guarentee the returned pointer won't be null!
-	if (wireEnd == WireEnd::START) {
-		return this->_bcNodeStart;
-	} else {
-		return this->_bcNodeEnd;
-	}
-}
-
-int SimWire::removeBoundaryNode(WireEnd wireEnd) {
-
-	SimNode* node = this->getBoundaryNode(wireEnd);
-
-	if (node == nullptr)
-		return -1;
-
-	// remove the link in the SimulationNode
-	// note we're not calling the public function but rather
-	// using friend privileges to directly access the storage
-	auto wireEndPairIt = std::find(node->_wires.begin(), node->_wires.end(),
-		std::pair<SimWire*, WireEnd>(this, wireEnd));
-
-	// for now
-
-	if (wireEndPairIt != node->_wires.end()) {
-		node->_wires.erase(wireEndPairIt);
-	} else {
-		// the node wasn't storing a reference to this wire anyway,
-		// so we didn't really 'remove' anything
-	}
-
-	// finally, set the stored pointer to null
-	if (wireEnd == WireEnd::START) {
-		this->_bcNodeStart = nullptr;
-	} else {
-		this->_bcNodeEnd = nullptr;
-	}
-
-	return 0;
 }
 
 void SimWire::setStoreTimesteps(unsigned int storeTimesteps) {
@@ -566,6 +482,24 @@ void SimWire::_computeHeatDerivatives(float dt) {
 	for (unsigned i = 0; i < this->_config.nx - 2; i++) {
 		_heat_xx_current[i] = (_heat_x_current[i + 1] - _heat_x_current[i]) / this->_config.dx;
 	}
+}
+
+void SimWire::_updateWaveBoundaries(std::vector<float>&wave_next, float dt) {
+
+	wave_next[0] =
+		this->edge->getStartNode().getSimNode()->waveBoundary(this, WireEnd::START, dt);
+
+	wave_next[this->_config.nx - 1] =
+		this->edge->getEndNode().getSimNode()->waveBoundary(this, WireEnd::END, dt);
+}
+
+void SimWire::_updateHeatBoundaries(std::vector<float>&heat_next, float dt) {
+
+	heat_next[0] =
+		this->edge->getStartNode().getSimNode()->heatBoundary(this, WireEnd::START, dt);
+
+	heat_next[this->_config.nx - 1] =
+		this->edge->getEndNode().getSimNode()->heatBoundary(this, WireEnd::END, dt);
 }
 
 void SimWire::_updateTemporalIndex() {

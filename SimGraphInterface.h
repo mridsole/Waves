@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "SimWire.h"
 #include "SimNode.h"
 
@@ -8,7 +9,9 @@ namespace hwsim {
 struct SimWireEdge;
 struct SimNodeVertex;
 
-// the graph interface
+// Interfaces for SimWire and SimNode to use, in order to access the graph model
+// the data fields of a DirectedGraph<> Edge/Vertex specialization should implement these
+
 struct SimWireEdge
 {
 	SimWireEdge() {};
@@ -27,6 +30,7 @@ struct SimNodeVertex
 	virtual ~SimNodeVertex() {};
 
 	virtual Edges& getEdges() = 0;
+	virtual SimNode* getSimNode() = 0;
 };
 
 };

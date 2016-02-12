@@ -1,7 +1,6 @@
 #pragma once
 
-#include <utility>
-
+#include "SimGraphInterface.h"
 #include "SimWire.h"
 
 namespace hwsim {
@@ -36,14 +35,10 @@ public:
 	float waveBoundary(SimWire* wire, WireEnd wireEnd, float dt);
 	float heatBoundary(SimWire* wire, WireEnd wireEnd, float dt);
 
-	// add/remove wires from the node
-	void addWire(SimWire* wire, WireEnd wireEnd);
-	void removeWire(SimWire* wire, WireEnd wireEnd);
-
 private:
 
-	// vector of wires connected at the node, and how they're connected (which end)
-	std::vector<std::pair<SimWire*, WireEnd>> _wires;
+	// interface into the graph structure
+	SimNodeVertex* vertex;
 };
 
 }

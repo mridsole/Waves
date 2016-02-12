@@ -1,6 +1,6 @@
 #pragma once
-
 #include <vector>
+#include "SimGraphInterface.h"
 
 namespace hwsim {
 
@@ -71,19 +71,6 @@ public:
 	const std::vector<float>& getWaveFuture() const;
 	const std::vector<float>& getHeatFuture() const;
 
-	// set the boundary nodes
-	// setting will remove the previous link
-	// 0: connection successfully added
-	// 1: connection already existed
-	int setBoundaryNode(SimNode* node, WireEnd wireEnd);
-	SimNode* getBoundaryNode(WireEnd wireEnd);
-
-	// removes the two-way link between this and the given boundary node
-	// (sets the internal storage to nullptr)
-	// -1: existing bc ref was nullptr
-	//  0: removed successfully
-	int removeBoundaryNode(WireEnd wireEnd);
-
 	// set/get how many timesteps we're storing
 	// error if setting to values smaller than 3
 	void setStoreTimesteps(unsigned int storeTimesteps);
@@ -106,6 +93,10 @@ private:
 
 	// compuate heat spatial and temporal derivatives
 	void _computeHeatDerivatives(float dt);
+
+	// update the boundaries, using the nodes
+	void _updateWaveBoundaries(std::vector<float>&wave_next, float dt);
+	void _updateHeatBoundaries(std::vector<float>&heat_next, float dt);
 
 	// update the temporal index - done at the start/very end of each sim tick
 	void _updateTemporalIndex();
@@ -137,6 +128,8 @@ private:
 	
 	// store the 'damping energy differential' - energy lost due to damping
 
+	// the corresponding SimWireEdge graph interface
+	SimWireEdge* edge;
 	
 	// what's the index of the 'current' timestep?
 	unsigned int _currentTimestepIndex;
@@ -146,10 +139,6 @@ private:
 
 	// is the current wire configuration valid?
 	bool _isConfigValid;
-
-	// store pointers to the boundary nodes
-	SimNode* _bcNodeStart;
-	SimNode* _bcNodeEnd;
 };
 
 };

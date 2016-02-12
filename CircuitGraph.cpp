@@ -35,3 +35,8 @@ hwsim::SimNodeVertex::Edges& CircuitVertexData::getEdges() {
 
 	return edgesBuffer;
 };
+
+hwsim::SimNode* CircuitVertexData::getSimNode() {
+
+	return simNode;
+}
