@@ -287,7 +287,7 @@
     <ClInclude Include="FrameUpdateDispatcher.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="HeatWave.h" />
-    <ClInclude Include="SimConstructor.h" />
+    <ClInclude Include="SimInitializer.h" />
     <ClInclude Include="SimController.h" />
     <ClInclude Include="SimGraphInterface.h" />
     <ClInclude Include="UnitTest++\AssertException.h" />
@@ -343,7 +343,7 @@
     <ClCompile Include="CircuitGraph.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="HeatWave.cpp" />
-    <ClCompile Include="SimConstructor.cpp" />
+    <ClCompile Include="SimInitializer.cpp" />
     <ClCompile Include="SimController.cpp" />
     <ClCompile Include="TestCircuitGraph.cpp" />
     <ClCompile Include="tests.cpp">
@@ -353,6 +353,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='TestsOptimized|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="TestSim.cpp" />
+    <ClCompile Include="TestSimInitializer.cpp" />
     <ClCompile Include="UnitTest++\AssertException.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Tests|Win32'">NotUsing</PrecompiledHeader>

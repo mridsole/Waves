@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+// need to start using smart pointers more
+#include <memory>
+
 namespace hwsim {
 
 // forward declaration of enum WireEnd
@@ -35,21 +38,26 @@ public:
 		{};
 	};
 
+	// interface for building a state vector given a size
+	class StateBuilder {
+
+	public:
+		// this doesn't allocate a vector, it just fills it in
+		virtual void operator()(std::vector<float>& vec) const = 0;
+	};
+
 	// struct containing pointers to vectors that contain the initial state
 	struct InitState 
 	{
-		// !!!: use nullptr to tell the initializer to use the 
-		// default initial state instead
-
-		std::vector<float>* initWave;
-		std::vector<float>* initWaveVelocity;
-		std::vector<float>* initHeat;
+		std::shared_ptr<StateBuilder> initWave;
+		std::shared_ptr<StateBuilder> initWaveVelocity;
+		std::shared_ptr<StateBuilder> initHeat;
 
 		// these will probably be taken out later and put somewhere else,
 		// because they're arguably not part of the 'state'
-		std::vector<float>* waveSpeed;
-		std::vector<float>* damping;
-		std::vector<float>* diffusivity;
+		std::shared_ptr<StateBuilder> waveSpeed;
+		std::shared_ptr<StateBuilder> damping;
+		std::shared_ptr<StateBuilder> diffusivity;
 	};
 
 	SimWire();

@@ -95,60 +95,39 @@ bool SimWire::initialize(const Config& config, const InitState& initState, float
 	if (!this->setConfig(config))
 		return false;
 
-	// references from struct
-	const auto& initWave = *initState.initWave;
-	const auto& initWaveVelocity = *initState.initWaveVelocity;
-	const auto& initHeat = *initState.initHeat;
-	const auto& waveSpeed = *initState.waveSpeed;
-	const auto& damping	= *initState.damping;
-	const auto& diffusivity = *initState.diffusivity;
+	// refs to builders
+	const auto& initWave = *initState.initWave.get();
+	const auto& initWaveVelocity = *initState.initWaveVelocity.get();
+	const auto& initHeat = *initState.initHeat.get();
+	const auto& waveSpeed = *initState.waveSpeed.get();
+	const auto& damping	= *initState.damping.get();
+	const auto& diffusivity = *initState.diffusivity.get();
 
-	// check the dimensions of everything
-	assert(this->_config.nx == initWave.size());
-	assert(this->_config.nx == initWaveVelocity.size());
-	assert(this->_config.nx == initHeat.size());
-
-	// check dimensions of wire properties
-	assert(this->_config.nx == waveSpeed.size());
-	assert(this->_config.nx == damping.size());
-	assert(this->_config.nx == diffusivity.size());
-
-	// values look okay, start storing stuff
+	// start storing stuff
 	this->_config.nx = config.nx;
 	this->_config.storeTimesteps = config.storeTimesteps;
 	this->_config.dx = config.dx;
 
-	// resize wire property storage and store the new stuff
-	this->_waveSpeed.resize(this->_config.nx);
-	this->_damping.resize(this->_config.nx);
-	this->_diffusivity.resize(this->_config.nx);
-
-	for (unsigned i = 0; i < this->_config.nx; i++) {
-
-		this->_waveSpeed[i] = waveSpeed[i];
-		this->_damping[i] = damping[i];
-		this->_diffusivity[i] = diffusivity[i];
-	}
-
-	// resize internal storage
+	// now we can just construct directly from the state builders
+	//this->_waveSpeed = waveSpeed(this->_config.nx);
+	//this->_damping = damping(this->_config.nx);
+	//this->_diffusivity = diffusivity(this->_config.nx);
 
 	// wave magnitude
-	this->_wave.resize(this->_config.storeTimesteps);
-	for (unsigned i = 0; i < this->_wave.size(); i++) {
-		this->_wave[i].resize(this->_config.nx);
-	}
+	//this->_wave.resize(this->_config.storeTimesteps);
+	//for (unsigned i = 0; i < this->_wave.size(); i++)
+	//	this->_wave[i] = initWave(this->_config.nx);
 
-	// heat magnitude
-	this->_heat.resize(this->_config.storeTimesteps);
-	for (unsigned i = 0; i < this->_heat.size(); i++) {
-		this->_heat[i].resize(this->_config.nx);
-	}
+	//// heat magnitude
+	//this->_heat.resize(this->_config.storeTimesteps);
+	//for (unsigned i = 0; i < this->_heat.size(); i++)
+	//	this->_heat[i] = initHeat(this->_config.nx);
 
-	// wave magnitude time derivative
-	this->_wave_t.resize(this->_config.storeTimesteps);
-	for (unsigned i = 0; i < this->_wave_t.size(); i++) {
-		this->_wave_t[i].resize(this->_config.nx);
-	}
+	//// wave magnitude time derivative
+	//this->_wave_t.resize(this->_config.storeTimesteps);
+	//for (unsigned i = 0; i < this->_wave_t.size(); i++) {
+	//	this->_wave_t[i].resize(this->_config.nx);
+	//}
 
 	// wave magnitude space derivative
 	this->_wave_x.resize(this->_config.storeTimesteps);
@@ -186,11 +165,11 @@ bool SimWire::initialize(const Config& config, const InitState& initState, float
 	for (unsigned i = 0; i < this->_config.nx; i++) {
 
 		// set initial wave and heat state
-		_wave_current[i] = initWave[i];
-		_heat_current[i] = initHeat[i];
+		//_wave_current[i] = initWave[i];
+		//_heat_current[i] = initHeat[i];
 
 		// use velocity information to fill the next timestep
-		_wave_next[i] = initWave[i] + initWaveVelocity[i] * dt;
+		//_wave_next[i] = initWave[i] + initWaveVelocity[i] * dt;
 
 		// this isn't really valid - but just set the next heat step
 		// to the current heat step (we have to do this because at this 

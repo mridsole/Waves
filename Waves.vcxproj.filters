@@ -195,7 +195,7 @@
     <ClInclude Include="SimController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimConstructor.h">
+    <ClInclude Include="SimInitializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -305,8 +305,11 @@
     <ClCompile Include="TestSim.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
-    <ClCompile Include="SimConstructor.cpp">
+    <ClCompile Include="SimInitializer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestSimInitializer.cpp">
+      <Filter>Source Files\tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

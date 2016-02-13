@@ -25,6 +25,7 @@ struct CircuitEdgeData : public CircuitEdgeDataBase, public hwsim::SimWireEdge
 	hwsim::SimWire* simWire;
 
 	// the initialization configuration and state
+	// used for customized initialization - set to nullptr to use defaults
 	hwsim::SimWire::Config* simWireConfig;
 	hwsim::SimWire::InitState* simWireInitState;
 
