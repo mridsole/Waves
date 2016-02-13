@@ -39,25 +39,25 @@ public:
 	};
 
 	// interface for building a state vector given a size
-	class StateBuilder {
+	class StateInitializer {
 
 	public:
 		// this doesn't allocate a vector, it just fills it in
 		virtual void operator()(std::vector<float>& vec) const = 0;
 	};
 
-	// struct containing pointers to vectors that contain the initial state
+	// struct containing pointers to state initializers
 	struct InitState 
 	{
-		std::shared_ptr<StateBuilder> initWave;
-		std::shared_ptr<StateBuilder> initWaveVelocity;
-		std::shared_ptr<StateBuilder> initHeat;
+		std::shared_ptr<StateInitializer> initWave;
+		std::shared_ptr<StateInitializer> initWaveVelocity;
+		std::shared_ptr<StateInitializer> initHeat;
 
 		// these will probably be taken out later and put somewhere else,
 		// because they're arguably not part of the 'state'
-		std::shared_ptr<StateBuilder> waveSpeed;
-		std::shared_ptr<StateBuilder> damping;
-		std::shared_ptr<StateBuilder> diffusivity;
+		std::shared_ptr<StateInitializer> waveSpeed;
+		std::shared_ptr<StateInitializer> damping;
+		std::shared_ptr<StateInitializer> diffusivity;
 	};
 
 	SimWire();
@@ -122,42 +122,49 @@ public:
 private:
 
 	// compute wave spatial and temporal derivatives
-	void _computeWaveDerivatives(float dt);
+	void computeWaveDerivatives(float dt);
 
 	// compuate heat spatial and temporal derivatives
-	void _computeHeatDerivatives(float dt);
+	void computeHeatDerivatives(float dt);
 
 	// update the boundaries, using the nodes
-	void _updateWaveBoundaries(std::vector<float>&wave_next, float dt);
-	void _updateHeatBoundaries(std::vector<float>&heat_next, float dt);
+	void updateWaveBoundaries(std::vector<float>&wave_next, float dt);
+	void updateHeatBoundaries(std::vector<float>&heat_next, float dt);
 
 	// update the temporal index - done at the start/very end of each sim tick
-	void _updateTemporalIndex();
+	void updateTemporalIndex();
 
-	Config _config;
+	// get the next temporal index
+	unsigned int nextTemporalIndex();
+
+	// resize the vectors that store the state
+	void allocateState();
+	void initializeState(const InitState& initState, float dt);
+
+	Config config;
 
 	// the wave speed over the wire
-	std::vector<float> _waveSpeed;
+	std::vector<float> waveSpeed;
 
 	// the damping over the wire
-	std::vector<float> _damping;
+	std::vector<float> damping;
 
 	// the "thermal" diffusivity of the wire
-	std::vector<float> _diffusivity;
+	std::vector<float> diffusivity;
 
 	// contains the wave amplitude data, for the past n (probably 3) timesteps
-	std::vector<std::vector<float>> _wave;
+	std::vector<std::vector<float>> wave;
 
 	// contains the heat data, for the past n (probably 3 (?)) timesteps
-	std::vector<std::vector<float>> _heat;
+	std::vector<std::vector<float>> heat;
 
 	// storage for derivatives of various orders
-	std::vector<std::vector<float>> _wave_x;
-	std::vector<std::vector<float>> _wave_xx;
-	std::vector<std::vector<float>> _wave_t;
+	std::vector<std::vector<float>> wave_x;
+	std::vector<std::vector<float>> wave_xx;
+	std::vector<std::vector<float>> wave_t;
 
-	std::vector<std::vector<float>> _heat_x;
-	std::vector<std::vector<float>> _heat_xx;
+	std::vector<std::vector<float>> heat_x;
+	std::vector<std::vector<float>> heat_xx;
 	
 	// store the 'damping energy differential' - energy lost due to damping
 	

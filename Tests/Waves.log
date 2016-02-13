@@ -1,5 +1,16 @@
 ﻿  TestSimInitializer.cpp
-e:\projects\waves\waves\testsiminitializer.cpp(48): warning C4002: too many actual parameters for macro 'TEST'
+  SimWire.cpp
+  SimNode.cpp
+  Generating Code...
+  Compiling...
+  Wire.cpp
   TestSim.cpp
+  TestCircuitGraph.cpp
+  SimInitializer.cpp
+  SimController.cpp
+  Node.cpp
+  HeatWave.cpp
+  CircuitGraph.cpp
+  Circuit.cpp
   Generating Code...
   Waves.vcxproj -> E:\projects\Waves\Tests\Heatwave.exe
