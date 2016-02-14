@@ -109,7 +109,8 @@ SUITE(SimInitializer)
 		simInit.constructInitializeNode(&node3->data);
 
 		// update the wires for a little bit
-		for (unsigned i = 0; i < 600000; i++) {
+		for (unsigned i = 0; i < 108000; i++) {
+
 			edge1->data.simWire->update(dt);
 			edge2->data.simWire->update(dt);
 			edge3->data.simWire->update(dt);
