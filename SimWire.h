@@ -58,10 +58,16 @@ public:
 		std::shared_ptr<StateInitializer> waveSpeed;
 		std::shared_ptr<StateInitializer> damping;
 		std::shared_ptr<StateInitializer> diffusivity;
+
+		// return true if all out pointers are valid
+		bool isValid() const {
+			return initWave && initWaveVelocity && initHeat && 
+				waveSpeed && damping && diffusivity;
+		};
 	};
 
-	SimWire();
-	SimWire(const Config& config);
+	SimWire(SimWireEdge* _edge);
+	SimWire(SimWireEdge* _edge, const Config& config);
 	~SimWire();
 
 	// updates one timestep for both wave and heat
@@ -135,7 +141,7 @@ private:
 	void updateTemporalIndex();
 
 	// get the next temporal index
-	unsigned int nextTemporalIndex();
+	unsigned int getNextTemporalIndex();
 
 	// resize the vectors that store the state
 	void allocateState();

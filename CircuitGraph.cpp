@@ -34,13 +34,10 @@ hwsim::SimWire::InitState* CircuitEdgeData::getInitState() {
 // definitions for CircuitVertexData:
 
 hwsim::SimNodeVertex::Edges& CircuitVertexData::getEdges() {
-
-	// we have an std::vector<Node*>
-
+	
 	edgesBuffer.resize(0);
-	for (auto it = vertex->edges.begin(); it < vertex->edges.end(); it++) {
-		edgesBuffer.push_back(&((*it)->data));
-	}
+	for (auto edge : vertex->edges)
+		edgesBuffer.push_back(&edge->data);
 
 	return edgesBuffer;
 };
@@ -48,4 +45,9 @@ hwsim::SimNodeVertex::Edges& CircuitVertexData::getEdges() {
 hwsim::SimNode* CircuitVertexData::getSimNode() {
 
 	return simNode;
+}
+
+void CircuitVertexData::setSimNode(hwsim::SimNode* _simNode) {
+	
+	this->simNode = _simNode;
 }

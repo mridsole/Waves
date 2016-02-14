@@ -12,16 +12,16 @@
 
 using namespace hwsim;
 
-SimWire::SimWire():
-	edge(nullptr),
+SimWire::SimWire(SimWireEdge* _edge):
+	edge(_edge),
 	_isInitialized(false), 
 	_isConfigValid(false) {
 
 	
 }
 
-SimWire::SimWire(const Config& config) :
-	edge(nullptr),
+SimWire::SimWire(SimWireEdge* _edge, const Config& config) :
+	edge(_edge),
 	_isInitialized(false),
 	_isConfigValid(false) {
 	
@@ -93,6 +93,10 @@ bool SimWire::initialize(const Config& config, const InitState& initState, float
 
 	// config set + validate
 	if (!this->setConfig(config))
+		return false;
+
+	// make sure we were given a valid InitState
+	if (!initState.isValid())
 		return false;
 
 	// reset circular buffer position
@@ -559,6 +563,11 @@ void SimWire::allocateState() {
 
 	if (!isConfigValid())
 		return;
+
+	// arguably not part of the 'state' but oh well
+	this->waveSpeed.resize(this->config.nx);
+	this->damping.resize(this->config.nx);
+	this->diffusivity.resize(this->config.nx);
 
 	// wave magnitude
 	this->wave.resize(this->config.storeTimesteps);

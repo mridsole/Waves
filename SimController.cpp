@@ -31,29 +31,29 @@ void SimController::update() {
 	// update devices here?
 }
 
-SimWire* SimController::createWire() {
-
-	SimWire* newWire = new SimWire();
-	this->_wires.push_back(newWire);
-
-	return newWire;
-}
-
-SimWire* SimController::createConfigWire() {
-
-	SimWire* newWire = new SimWire(this->_config.defaultWireConfig);
-	this->_wires.push_back(newWire);
-
-	return newWire;
-}
-
-SimWire* SimController::createConfigWire(const SimWire::Config& config) {
-
-	SimWire* newWire = new SimWire(config);
-	this->_wires.push_back(newWire);
-
-	return newWire;
-}
+//SimWire* SimController::createWire() {
+//
+//	SimWire* newWire = new SimWire();
+//	this->_wires.push_back(newWire);
+//
+//	return newWire;
+//}
+//
+//SimWire* SimController::createConfigWire() {
+//
+//	SimWire* newWire = new SimWire(this->_config.defaultWireConfig);
+//	this->_wires.push_back(newWire);
+//
+//	return newWire;
+//}
+//
+//SimWire* SimController::createConfigWire(const SimWire::Config& config) {
+//
+//	SimWire* newWire = new SimWire(config);
+//	this->_wires.push_back(newWire);
+//
+//	return newWire;
+//}
 
 bool SimController::initToDefaultConstants(SimWire* wire) {
 
@@ -108,13 +108,13 @@ int SimController::deleteWire(SimWire& wire) {
 	}
 }
 
-SimNode* SimController::createNode() {
-
-	SimNode* newNode = new SimNode();
-	this->_nodes.push_back(newNode);
-
-	return newNode;
-}
+//SimNode* SimController::createNode() {
+//
+//	SimNode* newNode = new SimNode();
+//	this->_nodes.push_back(newNode);
+//
+//	return newNode;
+//}
 
 int SimController::deleteNode(SimNode& node) {
 

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "stdio.h"
+#include <memory>
 
 #include "UnitTest++/UnitTest++.h"
 
@@ -12,6 +13,45 @@
 
 using namespace hwgame;
 
+
+float dt = 0.001f;
+
+// make a constant initializer real quick
+class UniformWireStateInitializer : public hwsim::SimWire::StateInitializer
+{
+
+public:
+
+	// utility - construct and wrap in a shared_ptr
+	static std::shared_ptr<hwsim::SimWire::StateInitializer> Create(float _value)
+	{
+		return std::shared_ptr<hwsim::SimWire::StateInitializer>(
+			new UniformWireStateInitializer(_value));
+	}
+
+	UniformWireStateInitializer(float _value) :
+		value(_value)
+	{};
+
+	UniformWireStateInitializer() :
+		value(0.f)
+	{};
+
+	void operator()(std::vector<float>& vec) const {
+
+		// fill the vector with the default value
+		for (unsigned i = 0; i < vec.size(); i++) {
+			vec[i] = value;
+		}
+	}
+
+	float value;
+};
+
+
+// an initializer for zeros
+auto zeros = std::shared_ptr<hwsim::SimWire::StateInitializer>(new UniformWireStateInitializer(0.0f));
+
 struct SimInitializerTestFixture {
 
 	CircuitVertex* node1;
@@ -23,8 +63,9 @@ struct SimInitializerTestFixture {
 
 	hwsim::SimInitializer simInit;
 
-	SimInitializerTestFixture() {
+	SimInitializerTestFixture() : simInit(dt) {
 
+		// a very simple test graph
 		node1 = new CircuitVertex();
 		node2 = new CircuitVertex();
 		node3 = new CircuitVertex();
@@ -32,7 +73,17 @@ struct SimInitializerTestFixture {
 		edge2 = new CircuitEdge(node2, node3);
 		edge3 = new CircuitEdge(node1, node3);
 
-		
+		// set the default config and initState for the initializer
+		simInit.defaultWireConfig = hwsim::SimWire::Config(3, 200, 0.01f);
+
+		// set up the default init state
+		simInit.defaultWireInitState.damping = UniformWireStateInitializer::Create(0.1f);
+		simInit.defaultWireInitState.waveSpeed = UniformWireStateInitializer::Create(1.f);
+		simInit.defaultWireInitState.diffusivity = UniformWireStateInitializer::Create(0.01f);
+
+		simInit.defaultWireInitState.initWave = zeros;
+		simInit.defaultWireInitState.initWaveVelocity = zeros;
+		simInit.defaultWireInitState.initHeat = zeros;
 	};
 
 	~SimInitializerTestFixture() {
@@ -45,9 +96,23 @@ struct SimInitializerTestFixture {
 
 SUITE(SimInitializer)
 {
-	TEST_FIXTURE(SimInitializerTestFixture, InitTest1)
+	TEST_FIXTURE(SimInitializerTestFixture, InitializeFromDefaults)
 	{
-		// set the default config and initState for the initializer
-		simInit.defaultWireConfig = hwsim::SimWire::Config();
+		// make a bunch of wires from the defaults
+		simInit.constructInitializeWire(&edge1->data);
+		simInit.constructInitializeWire(&edge2->data);
+		simInit.constructInitializeWire(&edge3->data);
+
+		// now make some nodes
+		simInit.constructInitializeNode(&node1->data);
+		simInit.constructInitializeNode(&node2->data);
+		simInit.constructInitializeNode(&node3->data);
+
+		// update the wires for a little bit
+		for (unsigned i = 0; i < 600000; i++) {
+			edge1->data.simWire->update(dt);
+			edge2->data.simWire->update(dt);
+			edge3->data.simWire->update(dt);
+		}
 	}
 }

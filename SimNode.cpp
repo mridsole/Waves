@@ -3,7 +3,8 @@
 
 using namespace hwsim;
 
-SimNode::SimNode()
+SimNode::SimNode(SimNodeVertex* _vertex) :
+	vertex(_vertex)
 {
 
 }

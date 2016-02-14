@@ -28,11 +28,11 @@ class SimNode
 
 public:
 	
-	SimNode();
+	SimNode(SimNodeVertex* vertex);
 	~SimNode();
 
 	// update the value at the boundary for all connected wires
-	// must be called AFTER each wire has been updated!
+	// must be called AFTER each wire has been updated
 	float waveBoundary(SimWire* wire, WireEnd wireEnd, float dt);
 	float heatBoundary(SimWire* wire, WireEnd wireEnd, float dt);
 

@@ -1,16 +1,1 @@
-﻿  TestSimInitializer.cpp
-  SimWire.cpp
-  SimNode.cpp
-  Generating Code...
-  Compiling...
-  Wire.cpp
-  TestSim.cpp
-  TestCircuitGraph.cpp
-  SimInitializer.cpp
-  SimController.cpp
-  Node.cpp
-  HeatWave.cpp
-  CircuitGraph.cpp
-  Circuit.cpp
-  Generating Code...
-  Waves.vcxproj -> E:\projects\Waves\Tests\Heatwave.exe
+﻿  Waves.vcxproj -> E:\projects\Waves\Tests\Heatwave.exe

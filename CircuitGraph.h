@@ -56,6 +56,7 @@ struct CircuitVertexData : public CircuitVertexDataBase, public hwsim::SimNodeVe
 	// satisfy SimNodeVertex
 	virtual Edges& getEdges();
 	hwsim::SimNode* getSimNode();
+	void setSimNode(hwsim::SimNode* simNode);
 
 private:
 

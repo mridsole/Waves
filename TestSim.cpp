@@ -33,22 +33,18 @@ struct SimTestFixture {
 
 		// we have constructed a graph - now assign each node and edge a SimNode
 		// and a SimWire
-		node1->data.simNode = new hwsim::SimNode();
-		node2->data.simNode = new hwsim::SimNode();
-		node3->data.simNode = new hwsim::SimNode();
+		node1->data.simNode = new hwsim::SimNode(&node1->data);
+		node2->data.simNode = new hwsim::SimNode(&node2->data);
+		node3->data.simNode = new hwsim::SimNode(&node3->data);
 
-		edge1->data.simWire = new hwsim::SimWire();
-		edge2->data.simWire = new hwsim::SimWire();
-		edge3->data.simWire = new hwsim::SimWire();
+		edge1->data.simWire = new hwsim::SimWire(&edge1->data);
+		edge2->data.simWire = new hwsim::SimWire(&edge1->data);
+		edge3->data.simWire = new hwsim::SimWire(&edge1->data);
 
 		// setup the two way graph relationships
 		node1->data.simNode->vertex = &node1->data;
 		node2->data.simNode->vertex = &node2->data;
 		node3->data.simNode->vertex = &node3->data;
-
-		edge1->data.simWire->edge = &edge1->data;
-		edge2->data.simWire->edge = &edge2->data;
-		edge3->data.simWire->edge = &edge3->data;
 
 		// initialize the sim wires
 		hwsim::SimWire::Config cfg = { 3, 200, 0.01f };

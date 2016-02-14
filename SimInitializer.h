@@ -14,10 +14,16 @@ class SimInitializer
 public:
 
 	SimInitializer();
+	SimInitializer(float dt);
 	~SimInitializer();
 
+	void constructInitializeWire(SimWireEdge* edge);
 	void constructWire(SimWireEdge* edge);
 	void initializeWire(SimWireEdge* edge);
+
+	void constructInitializeNode(SimNodeVertex* vertex);
+	void constructNode(SimNodeVertex* vertex);
+	void initializeNode(SimNodeVertex* vertex);
 
 	SimWire::Config defaultWireConfig;
 	SimWire::InitState defaultWireInitState;

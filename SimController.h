@@ -40,11 +40,11 @@ public:
 
 	// create a new wire (config optional) and return pointer to it
 	// configuration and initialization is up to the user!
-	SimWire* createWire();
+	//SimWire* createWire();
 
-	// create and configure a wire
-	SimWire* createConfigWire();
-	SimWire* createConfigWire(const SimWire::Config& config);
+	//// create and configure a wire
+	//SimWire* createConfigWire();
+	//SimWire* createConfigWire(const SimWire::Config& config);
 	
 	// initialize a wire to the defaults
 	bool initToDefaultConstants(SimWire* wire);
@@ -53,7 +53,7 @@ public:
 	int deleteWire(SimWire& wire);
 
 	// create a new node
-	SimNode* createNode();
+	//SimNode* createNode();
 
 	// delete a node permanently, performing cleanup and all that
 	int deleteNode(SimNode& node);

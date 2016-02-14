@@ -43,6 +43,7 @@ struct SimNodeVertex
 
 	virtual Edges& getEdges() = 0;
 	virtual SimNode* getSimNode() = 0;
+	virtual void setSimNode(hwsim::SimNode* node) = 0;
 };
 
 };
