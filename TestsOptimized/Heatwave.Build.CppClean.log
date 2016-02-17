@@ -12,7 +12,7 @@ e:\projects\waves\waves\testsoptimized\heatwave.obj
 e:\projects\waves\waves\testsoptimized\node.obj
 e:\projects\waves\waves\testsoptimized\circuitgraph.obj
 e:\projects\waves\waves\testsoptimized\circuit.obj
-e:\projects\waves\waves\testsoptimized\tests.obj
+e:\projects\waves\waves\testsoptimized\simconstructor.obj
 e:\projects\waves\waves\testsoptimized\imgui_demo.obj
 e:\projects\waves\waves\testsoptimized\imgui.obj
 e:\projects\waves\waves\testsoptimized\xmltestreporter.obj
@@ -34,7 +34,9 @@ e:\projects\waves\waves\testsoptimized\compositetestreporter.obj
 e:\projects\waves\waves\testsoptimized\checks.obj
 e:\projects\waves\waves\testsoptimized\assertexception.obj
 e:\projects\waves\waves\testsoptimized\imgui_draw.obj
-e:\projects\waves\waves\testsoptimized\simconstructor.obj
+e:\projects\waves\waves\testsoptimized\testsiminitializer.obj
+e:\projects\waves\waves\testsoptimized\siminitializer.obj
+e:\projects\waves\waves\testsoptimized\tests.obj
 e:\projects\waves\testsoptimized\heatwave.exe
 e:\projects\waves\testsoptimized\heatwave.ipdb
 e:\projects\waves\testsoptimized\heatwave.iobj

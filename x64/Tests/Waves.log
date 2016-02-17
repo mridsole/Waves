@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2005: main already defined in tests.obj
+sfml-window-d.lib(sfml-window-d-2.dll) : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'

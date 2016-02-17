@@ -9,6 +9,6 @@ int main() {
 
 	UnitTest::RunAllTests();
 
-	printf("Press enter to continue ...");
+	printf("Press enter to continue ...\n");
 	getchar();
 }

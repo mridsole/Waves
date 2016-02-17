@@ -1,7 +1,7 @@
-﻿  stdafx.cpp
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Waves.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
   SimWire.cpp
   SimNode.cpp
-  SimController.cpp
   main.cpp
 e:\projects\waves\waves\heatwave.h(6): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   imgui_draw.cpp
@@ -68,10 +68,175 @@ e:\projects\waves\waves\imgui\imgui.cpp(9321): fatal error C1010: unexpected end
 e:\projects\waves\waves\guisimcontrolswindow.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Wire.cpp
 e:\projects\waves\waves\wire.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  XmlTestReporter.cpp
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(1): warning C4627: '#include "Config.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\xmltestreporter.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(4): warning C4627: '#include "XmlTestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\xmltestreporter.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(6): warning C4627: '#include <iostream>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\xmltestreporter.cpp(6): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(7): warning C4627: '#include <sstream>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\xmltestreporter.cpp(7): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(8): warning C4627: '#include <string>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\xmltestreporter.cpp(8): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\xmltestreporter.cpp(131): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TimeHelpers.cpp
+e:\projects\waves\waves\unittest++\win32\timehelpers.cpp(1): warning C4627: '#include "TimeHelpers.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\win32\timehelpers.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\win32\timehelpers.cpp(4): warning C4627: '#include <windows.h>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\win32\timehelpers.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\win32\timehelpers.cpp(50): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TimeConstraint.cpp
+e:\projects\waves\waves\unittest++\timeconstraint.cpp(1): warning C4627: '#include "TimeConstraint.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\timeconstraint.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\timeconstraint.cpp(2): warning C4627: '#include "TestResults.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\timeconstraint.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\timeconstraint.cpp(3): warning C4627: '#include "MemoryOutStream.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\timeconstraint.cpp(3): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\timeconstraint.cpp(4): warning C4627: '#include "CurrentTest.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\timeconstraint.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\timeconstraint.cpp(30): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestRunner.cpp
+e:\projects\waves\waves\unittest++\testrunner.cpp(1): warning C4627: '#include "TestRunner.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(2): warning C4627: '#include "TestResults.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(3): warning C4627: '#include "TestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(3): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(4): warning C4627: '#include "TestReporterStdout.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(5): warning C4627: '#include "TimeHelpers.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(6): warning C4627: '#include "MemoryOutStream.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(6): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(8): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testrunner.cpp(8): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testrunner.cpp(83): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestResults.cpp
+e:\projects\waves\waves\unittest++\testresults.cpp(1): warning C4627: '#include "TestResults.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testresults.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testresults.cpp(2): warning C4627: '#include "TestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testresults.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testresults.cpp(4): warning C4627: '#include "TestDetails.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testresults.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testresults.cpp(60): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestReporterStdout.cpp
+e:\projects\waves\waves\unittest++\testreporterstdout.cpp(1): warning C4627: '#include "TestReporterStdout.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testreporterstdout.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testreporterstdout.cpp(2): warning C4627: '#include <cstdio>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testreporterstdout.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testreporterstdout.cpp(4): warning C4627: '#include "TestDetails.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testreporterstdout.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testreporterstdout.cpp(45): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestReporter.cpp
+e:\projects\waves\waves\unittest++\testreporter.cpp(1): warning C4627: '#include "TestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testreporter.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testreporter.cpp(9): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestList.cpp
+e:\projects\waves\waves\unittest++\testlist.cpp(1): warning C4627: '#include "TestList.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testlist.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testlist.cpp(2): warning C4627: '#include "Test.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testlist.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testlist.cpp(4): warning C4627: '#include <cassert>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testlist.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testlist.cpp(39): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestDetails.cpp
+e:\projects\waves\waves\unittest++\testdetails.cpp(1): warning C4627: '#include "TestDetails.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\testdetails.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\testdetails.cpp(23): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Test.cpp
+e:\projects\waves\waves\unittest++\test.cpp(1): warning C4627: '#include "Config.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(2): warning C4627: '#include "Test.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(3): warning C4627: '#include "TestList.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(3): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(4): warning C4627: '#include "TestResults.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(5): warning C4627: '#include "AssertException.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(6): warning C4627: '#include "MemoryOutStream.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(6): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(7): warning C4627: '#include "ExecuteTest.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(7): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(10): warning C4627: '#include "Posix/SignalTranslator.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\test.cpp(10): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\test.cpp(39): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  ReportAssert.cpp
+e:\projects\waves\waves\unittest++\reportassert.cpp(1): warning C4627: '#include "ReportAssert.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(2): warning C4627: '#include "ReportAssertImpl.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(3): warning C4627: '#include "AssertException.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(3): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(4): warning C4627: '#include "CurrentTest.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(5): warning C4627: '#include "TestResults.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(6): warning C4627: '#include "TestDetails.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(6): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(9): warning C4627: '#include "ReportAssertImpl.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\reportassert.cpp(9): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\reportassert.cpp(72): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  MemoryOutStream.cpp
+e:\projects\waves\waves\unittest++\memoryoutstream.cpp(1): warning C4627: '#include "MemoryOutStream.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\memoryoutstream.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\memoryoutstream.cpp(50): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\memoryoutstream.cpp(50): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\memoryoutstream.cpp(51): warning C4627: '#include <cstdio>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\memoryoutstream.cpp(51): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\memoryoutstream.cpp(219): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Generating Code...
+  Compiling...
+  DeferredTestResult.cpp
+e:\projects\waves\waves\unittest++\deferredtestresult.cpp(1): warning C4627: '#include "Config.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestresult.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestresult.cpp(4): warning C4627: '#include "DeferredTestResult.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestresult.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestresult.cpp(5): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestresult.cpp(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestresult.cpp(44): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  DeferredTestReporter.cpp
+e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(1): warning C4627: '#include "Config.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(4): warning C4627: '#include "DeferredTestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(4): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(5): warning C4627: '#include "TestDetails.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(5): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\deferredtestreporter.cpp(34): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  CurrentTest.cpp
+e:\projects\waves\waves\unittest++\currenttest.cpp(1): warning C4627: '#include "CurrentTest.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\currenttest.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\currenttest.cpp(2): warning C4627: '#include <cstddef>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\currenttest.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\currenttest.cpp(19): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  CompositeTestReporter.cpp
+e:\projects\waves\waves\unittest++\compositetestreporter.cpp(1): warning C4627: '#include "CompositeTestReporter.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\compositetestreporter.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\compositetestreporter.cpp(2): warning C4627: '#include <cstddef>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\compositetestreporter.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\compositetestreporter.cpp(67): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Checks.cpp
+e:\projects\waves\waves\unittest++\checks.cpp(1): warning C4627: '#include "Checks.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\checks.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\checks.cpp(2): warning C4627: '#include <cstring>': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\checks.cpp(2): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\checks.cpp(51): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  AssertException.cpp
+e:\projects\waves\waves\unittest++\assertexception.cpp(1): warning C4627: '#include "AssertException.h"': skipped when looking for precompiled header use
+  e:\projects\waves\waves\unittest++\assertexception.cpp(1): note: Add directive to 'stdafx.h' or rebuild precompiled header
+e:\projects\waves\waves\unittest++\assertexception.cpp(16): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  TestSimInitializer.cpp
+  TestSim.cpp
+  tests.cpp
+  TestCircuitGraph.cpp
+  SimController.cpp
+  SimInitializer.cpp
   HeatWave.cpp
 e:\projects\waves\waves\heatwave.h(6): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Node.cpp
 e:\projects\waves\waves\node.h(3): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  CircuitGraph.cpp
   Circuit.cpp
 e:\projects\waves\waves\wire.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Generating Code...

@@ -12,7 +12,7 @@ namespace hwsim {
 struct SimWireEdge;
 struct SimNodeVertex;
 
-// Interfaces for SimWire and SimNode to use, in order to access the graph model
+// Interfaces for SimWire and SimNode to use, in order to access the graph mode
 // the data fields of a DirectedGraph<> Edge/Vertex specialization should implement these
 
 struct SimWireEdge

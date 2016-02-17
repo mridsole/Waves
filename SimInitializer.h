@@ -33,4 +33,36 @@ public:
 	float dt;
 };
 
+// make a constant initializer real quick
+class UniformWireStateInitializer : public hwsim::SimWire::StateInitializer
+{
+
+public:
+
+	// utility - construct and wrap in a shared_ptr
+	static std::shared_ptr<hwsim::SimWire::StateInitializer> Create(float _value)
+	{
+		return std::shared_ptr<hwsim::SimWire::StateInitializer>(
+			new UniformWireStateInitializer(_value));
+	}
+
+	UniformWireStateInitializer(float _value) :
+		value(_value)
+	{};
+
+	UniformWireStateInitializer() :
+		value(0.f)
+	{};
+
+	void operator()(std::vector<float>& vec) const {
+
+		// fill the vector with the default value
+		for (unsigned i = 0; i < vec.size(); i++) {
+			vec[i] = value;
+		}
+	}
+
+	float value;
+};
+
 };
