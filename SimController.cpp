@@ -34,7 +34,7 @@ void SimController::reset() {
 
 	// reset each wire
 	for (auto wire : wires) {
-		wire->reset();
+		wire->reset(config.dt);
 	}
 }
 

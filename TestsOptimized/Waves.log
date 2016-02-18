@@ -1,1 +1,8 @@
-﻿  Waves.vcxproj -> E:\projects\Waves\TestsOptimized\Heatwave.exe
+﻿  SimController.cpp
+  SimWire.cpp
+  Generating code
+  32 of 1471 functions ( 2.2%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    11 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Waves.vcxproj -> E:\projects\Waves\TestsOptimized\Heatwave.exe

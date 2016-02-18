@@ -78,8 +78,12 @@ public:
 	void update(float dt);
 	
 	// reset the wire to it's initial state
-	void reset();
+	void reset(float dt);
+	
+	// resetting just uses this internally 
+	void initializeInPlace(const InitState& initState, float dt);
 
+	// initialize the wire, reallocating the heat/wave buffers as necessary
 	bool initialize(const Config& config, const InitState& initState, float dt);
 
 	// return references to the wave and heat data at the 'current' time
@@ -104,6 +108,10 @@ public:
 	// get/set config
 	bool setConfig(const Config& config);
 	const Config& getConfig() const;
+	
+	// get/set InitState
+	bool setInitState(const InitState& initState);
+	const InitState& getInitState() const;
 
 	// has this wire been initialized?
 	bool isInitialized() const;
@@ -139,8 +147,14 @@ private:
 	// resize the vectors that store the state
 	void allocateState();
 	void initializeState(const InitState& initState, float dt);
-
+	
+	// store the configuration provided to us
 	Config config;
+	
+	// store the InitState provided to us (copy)
+	// remember copying is cheap here (best case) because InitState is
+	// composed of state builders, not actual vectors
+	InitState initState;
 
 	// the wave speed over the wire
 	std::vector<float> waveSpeed;

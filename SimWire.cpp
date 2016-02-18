@@ -94,19 +94,51 @@ void SimWire::update(float dt) {
 	this->updateTemporalIndex();
 }
 
-void SimWire::reset() {
+void SimWire::reset(float dt) {
 	
 	// TODO: implement this!
+	initializeInPlace(this->initState, dt);
 }
 
-bool SimWire::initialize(const Config& config, const InitState& initState, float dt) {
+void SimWire::initializeInPlace(const InitState& initState_, float dt) {
+	
+	// set the initial state
+	if (!this->setInitState(initState_))
+		return;
+
+	// reset circular buffer position
+	this->_currentTimestepIndex = 0;
+	
+	// initialize the state vectors, using our stored initializers
+	this->initializeState(initState, dt);
+
+	// might as well compute some derivatives while we're here
+	this->computeWaveDerivatives(dt);
+	this->computeHeatDerivatives(dt);
+
+	unsigned int next_idx = this->getNextTemporalIndex();
+
+	// update the wave boundaries - trusting that our node pointers aren't null!
+	updateWaveBoundaries(this->wave[next_idx], dt);
+
+	// update the heat boundaries
+	updateHeatBoundaries(this->heat[next_idx], dt);
+
+	// update indices
+	this->updateTemporalIndex();
+
+	// we're done!
+	this->_isInitialized = true;
+}
+
+bool SimWire::initialize(const Config& config, const InitState& initState_, float dt) {
 
 	// config set + validate
 	if (!this->setConfig(config))
 		return false;
 
 	// make sure we were given a valid InitState
-	if (!initState.isValid())
+	if (!this->setInitState(initState_))
 		return false;
 
 	// reset circular buffer position
@@ -212,6 +244,23 @@ bool SimWire::setConfig(const Config& config) {
 const SimWire::Config& SimWire::getConfig() const {
 
 	return this->config;
+}
+
+bool SimWire::setInitState(const InitState& initState_) {
+	
+	// validate first
+	if (!initState_.isValid())
+		return false;
+
+	// if it's fine, copy it to ours
+	this->initState = initState_;
+
+	return true;
+}
+
+const SimWire::InitState& SimWire::getInitState() const {
+	
+	return this->initState;
 }
 
 bool SimWire::isConfigValid() const {

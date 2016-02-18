@@ -1,30 +1,8 @@
 Need to organize the sim module:
 	
-	SimInitializer is good as a utility class. 
-	
-	We need to say who owns the vector of wires - either the client does, or the module does
-	Now IF the module owns the wires, then we need functions for constructing them and simultaneously
-	adding them to the stored list of wires. If we do this, then we should store this list in
-	SimController.
-	
-	When constructing SimInitializer, we should provide it with the SimController, so that the initializer
-	can add the wire directly to the SimController's list of wires.  
-
-	So what we should have is something like ...
-		SimInitializer::SimInitializer(SimController)
-
-	This works especially nicely, because SimController contains the timestep - so we don't have to 
-	explicitly pass it to the initializer anymore.
-
-	So how do we delete a wire? 
-	
-	What needs to happen is: the pointer in the SimController vector needs to be removed, and the graph
-	wire needs to be deleted as well. So this is important -- deleting a CircuitGraph wire will cause
-	memory errors, if the pointer isn't removed from the SimController vector. We can take care of this
-	by making the SimController - SimWireEdge connection two-way, so that in the SimWireEdge destructor,
-	the SimWireEdge may remove itself from the SimController vector.   
-	
-	We should require that the SimWire constructor accepts a SimController ref, but not the SimWireEdge!
-	Because our graph structure inherits the SimGraphInterface classes, and we may want to build up the
-	graph before we initialize the SimController (and indeed before we start doing anything with the sim
-	module). 
+Nearly done - now just implement resetting the simulation using the
+SimController. Question is where do we store the inital states - in the
+SimWires themselves? Seems like the best option - the only other option is to
+store an InitState separately, for each wire, in the SimController. The only
+advantage to this method is that it makes SimWire more lightweight, and
+there's really just not much point to that. 
