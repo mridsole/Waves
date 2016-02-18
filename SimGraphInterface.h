@@ -3,11 +3,9 @@
 #include <vector>
 #include "SimWire.h"
 #include "SimNode.h"
+#include "SimController.h"
 
 namespace hwsim {
-
-//class SimWire;
-//class SimNode;
 
 struct SimWireEdge;
 struct SimNodeVertex;
@@ -19,8 +17,10 @@ struct SimWireEdge
 {
 	friend class SimWire;
 	friend class SimNode;
+	friend class SimController;
 
 	SimWireEdge() {};
+
 	virtual ~SimWireEdge() {};
 
 	virtual SimNodeVertex& getStartNode() = 0;

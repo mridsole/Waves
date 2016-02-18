@@ -12,42 +12,10 @@
 #include "SimInitializer.h"
 
 using namespace hwgame;
-
+using UniformWireStateInitializer = hwsim::UniformWireStateInitializer;
+using SimCtrlConfig = hwsim::SimController::Config;
 
 float dt = 0.001f;
-
-// make a constant initializer real quick
-class UniformWireStateInitializer : public hwsim::SimWire::StateInitializer
-{
-
-public:
-
-	// utility - construct and wrap in a shared_ptr
-	static std::shared_ptr<hwsim::SimWire::StateInitializer> Create(float _value)
-	{
-		return std::shared_ptr<hwsim::SimWire::StateInitializer>(
-			new UniformWireStateInitializer(_value));
-	}
-
-	UniformWireStateInitializer(float _value) :
-		value(_value)
-	{};
-
-	UniformWireStateInitializer() :
-		value(0.f)
-	{};
-
-	void operator()(std::vector<float>& vec) const {
-
-		// fill the vector with the default value
-		for (unsigned i = 0; i < vec.size(); i++) {
-			vec[i] = value;
-		}
-	}
-
-	float value;
-};
-
 
 // an initializer for zeros
 auto zeros = std::shared_ptr<hwsim::SimWire::StateInitializer>(new UniformWireStateInitializer(0.0f));
@@ -60,11 +28,20 @@ struct SimInitializerTestFixture {
 	CircuitEdge* edge1;
 	CircuitEdge* edge2;
 	CircuitEdge* edge3;
-
+	
+	// our sim initializer to test
 	hwsim::SimInitializer simInit;
 
-	SimInitializerTestFixture() : simInit(dt) {
+	// our sim controller
+	hwsim::SimController simCtrl;
 
+	SimInitializerTestFixture() :
+		simCtrl(SimCtrlConfig(dt)),
+		simInit(simCtrl)
+	{
+		
+		// note how the graph is defined before anything to do
+		// with the sim module is mentioned
 		// a very simple test graph
 		node1 = new CircuitVertex();
 		node2 = new CircuitVertex();
@@ -108,12 +85,10 @@ SUITE(SimInitializer)
 		simInit.constructInitializeNode(&node2->data);
 		simInit.constructInitializeNode(&node3->data);
 
-		// update the wires for a little bit
+		// update using the sim controller
 		for (unsigned i = 0; i < 500000; i++) {
 
-			edge1->data.simWire->update(dt);
-			edge2->data.simWire->update(dt);
-			edge3->data.simWire->update(dt);
+			simCtrl.update();
 		}
 	}
 }

@@ -3,13 +3,8 @@
 
 using namespace hwsim;
 
-SimInitializer::SimInitializer() :
-	dt(0.01f)
-{
-}
-
-SimInitializer::SimInitializer(float _dt) :
-	dt(_dt)
+SimInitializer::SimInitializer(SimController& simCtrl_) :
+	simCtrl(simCtrl_)
 {}
 
 
@@ -23,11 +18,13 @@ void SimInitializer::constructInitializeWire(SimWireEdge* edge) {
 	initializeWire(edge);
 }
 
+
+// TODO: make this also add the created wire to the SimController list
 void SimInitializer::constructWire(SimWireEdge* edge) {
 
 	// if the edge is storing a nullptr then allocate a new wire first
 	if (edge->getWire() == nullptr)
-		edge->setWire(new SimWire(edge));
+		edge->setWire(new SimWire(edge, simCtrl));
 }
 
 void SimInitializer::initializeWire(SimWireEdge* edge) {
@@ -45,7 +42,7 @@ void SimInitializer::initializeWire(SimWireEdge* edge) {
 		defaultWireInitState : *edge->getInitState();
 
 	// now initialize the wire - this is where most of the memory allocation actually happens
-	edge->getWire()->initialize(cfg, init, dt);
+	edge->getWire()->initialize(cfg, init, simCtrl.config.dt);
 }
 
 void SimInitializer::constructInitializeNode(SimNodeVertex* vertex) {
@@ -60,6 +57,7 @@ void SimInitializer::constructNode(SimNodeVertex* vertex) {
 		vertex->setSimNode(new hwsim::SimNode(vertex));
 }
 
+// TODO: figure out exactly what should be done here
 void SimInitializer::initializeNode(SimNodeVertex* vertex) {
 
 

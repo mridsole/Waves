@@ -39,10 +39,12 @@ public:
 	};
 
 	// interface for building a state vector given a size
-	class StateInitializer {
+	class StateInitializer 
+	{
 
 	public:
 		// this doesn't allocate a vector, it just fills it in
+		// (use the length!)
 		virtual void operator()(std::vector<float>& vec) const = 0;
 	};
 
@@ -66,32 +68,19 @@ public:
 		};
 	};
 
-	SimWire(SimWireEdge* _edge);
-	SimWire(SimWireEdge* _edge, const Config& config);
+	SimWire(SimWireEdge* _edge, SimController& simCtrl_);
+	SimWire(SimWireEdge* _edge, SimController& simCtrl_, 
+			const Config& config);
+
 	~SimWire();
 
 	// updates one timestep for both wave and heat
 	void update(float dt);
+	
+	// reset the wire to it's initial state
+	void reset();
 
 	bool initialize(const Config& config, const InitState& initState, float dt);
-
-	// initialize the wire, given initial wave and wave velocity and given initial heat
-	bool initialize(const Config& config, std::vector<float>& initWave,
-		std::vector<float>& initWaveVelocity,
-		std::vector<float>& initHeat,
-		std::vector<float>& waveSpeed,
-		std::vector<float>& damping,
-		std::vector<float>& diffusivity,
-		float dt);
-
-	// initialization without configuration
-	bool initialize(std::vector<float>& initWave,
-		std::vector<float>& initWaveVelocity,
-		std::vector<float>& initHeat,
-		std::vector<float>& waveSpeed,
-		std::vector<float>& damping,
-		std::vector<float>& diffusivity,
-		float dt);
 
 	// return references to the wave and heat data at the 'current' time
 	const std::vector<float>& getWave() const;
@@ -121,9 +110,13 @@ public:
 
 	// is the config valid?
 	bool isConfigValid() const;
-
+	
+	// TODO: should this be a reference?
 	// the corresponding SimWireEdge graph interface
 	SimWireEdge* edge;
+	
+	// the SimController object for this wire
+	SimController& simCtrl;
 
 private:
 

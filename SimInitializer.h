@@ -2,6 +2,7 @@
 
 #include "SimWire.h"
 #include "SimNode.h"
+#include "SimController.h"
 #include "SimGraphInterface.h"
 
 namespace hwsim {
@@ -13,8 +14,7 @@ class SimInitializer
 
 public:
 
-	SimInitializer();
-	SimInitializer(float dt);
+	SimInitializer(SimController& simCtrl);
 	~SimInitializer();
 
 	void constructInitializeWire(SimWireEdge* edge);
@@ -27,10 +27,8 @@ public:
 
 	SimWire::Config defaultWireConfig;
 	SimWire::InitState defaultWireInitState;
-
-	// the timestep to use when applying the velocity in initialization
-	// this seems to be something of an odd one out, not sure where else to put it
-	float dt;
+	
+	SimController& simCtrl;
 };
 
 // make a constant initializer real quick

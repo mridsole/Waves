@@ -37,9 +37,9 @@ struct SimTestFixture {
 		node2->data.simNode = new hwsim::SimNode(&node2->data);
 		node3->data.simNode = new hwsim::SimNode(&node3->data);
 
-		edge1->data.simWire = new hwsim::SimWire(&edge1->data);
-		edge2->data.simWire = new hwsim::SimWire(&edge1->data);
-		edge3->data.simWire = new hwsim::SimWire(&edge1->data);
+		// edge1->data.simWire = new hwsim::SimWire(&edge1->data);
+		// edge2->data.simWire = new hwsim::SimWire(&edge1->data);
+		// edge3->data.simWire = new hwsim::SimWire(&edge1->data);
 
 		// setup the two way graph relationships
 		node1->data.simNode->vertex = &node1->data;
@@ -58,9 +58,9 @@ struct SimTestFixture {
 		std::vector<float> diffusivity(cfg.nx, 1.f);
 
 		// initialize
-		edge1->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
-		edge2->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
-		edge3->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
+//		edge1->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
+//		edge2->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
+//		edge3->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
 	};
 
 	~SimTestFixture() {
@@ -74,17 +74,17 @@ struct SimTestFixture {
 
 SUITE(Sim) {
 
-	TEST_FIXTURE(SimTestFixture, SimInitialization) {
+	//TEST_FIXTURE(SimTestFixture, SimInitialization) {
 
-		printf("running SimInitialization test ...\n");
+	//	printf("running SimInitialization test ...\n");
 
-		CHECK(edge1->data.simWire->edge == &edge1->data);
+	//	CHECK(edge1->data.simWire->edge == &edge1->data);
 
-		// update our wires
-		edge1->data.simWire->update(dt);
-		edge2->data.simWire->update(dt);
-		edge3->data.simWire->update(dt);
+	//	// update our wires
+	//	edge1->data.simWire->update(dt);
+	//	edge2->data.simWire->update(dt);
+	//	edge3->data.simWire->update(dt);
 
-		// ADD CHECKS HERE LATER
-	}
+	//	// ADD CHECKS HERE LATER
+	//}
 }

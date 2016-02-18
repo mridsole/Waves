@@ -2,81 +2,70 @@
 
 #include "SimWire.h"
 #include "SimNode.h"
+#include "SimGraphInterface.h"
 
 namespace hwsim {
-
-// stores various simulation parameters - dt, etc
-struct SimConfig {
-
-	// the differential time to more forward each step
-	float dt;
-
-	// the default configuration for a wire
-	SimWire::Config defaultWireConfig;
-
-	// the default constant initialization parameters for wires
-	struct {
-		float wave;
-		float heat;
-		float waveSpeed;
-		float damping;
-		float diffusivity;
-	} defaultConstInit;
-};
 
 // responsible for keeping track of all wires and nodes
 // managing memory, calling update functions, etc
 class SimController
 {
-
-public:
+	public:
 	
-	SimController(SimConfig config);
+	// add more here as required
+	struct Config
+	{
+		float dt;
+		
+		// default constructor
+		Config() :
+			dt(0.0f)
+		{};
+
+		Config(float dt_) :
+			dt(dt_)
+		{};
+	};	
+
+	SimController(Config config);
 	~SimController();
 
 	// update the simulation one timestep - calls step
 	// on all tracked wires, nodes and devices
 	void update();
-
-	// create a new wire (config optional) and return pointer to it
-	// configuration and initialization is up to the user!
-	//SimWire* createWire();
-
-	//// create and configure a wire
-	//SimWire* createConfigWire();
-	//SimWire* createConfigWire(const SimWire::Config& config);
 	
-	// initialize a wire to the defaults
-	bool initToDefaultConstants(SimWire* wire);
-
-	// delete a wire permanently, performing the necessary cleanup etc
-	int deleteWire(SimWire& wire);
-
-	// create a new node
-	//SimNode* createNode();
-
-	// delete a node permanently, performing cleanup and all that
-	int deleteNode(SimNode& node);
-
+	// reset the simulation
+	void reset();
+	
 	// set/get sim config (true = passed validation)
-	bool setConfig(const SimConfig& config);
-	const SimConfig& getConfig() const;
+	bool setConfig(const Config& config);
+	const Config& getConfig() const;
 
 	bool isConfigValid() const;
+	
+	// just no reason to encapsulate things like this
+	float timeElapsed;
 
 private:
+	
+	friend class SimWire;
+	friend class SimNode;
+	friend class SimInitializer;
+
+	// add a wire to the list
+	void addWire(SimWire* wire);
+	
+	// the wire will remove itself when destroyed
+	void removeWire(SimWire* wire);
 
 	// the current simulation configuration
-	SimConfig _config;
+	Config config;
 
 	// is the current sim configuration valid?
-	bool _isConfigValid;
+	bool isConfigValid_;
 
 	// store all the wires
-	std::vector<SimWire*> _wires;
-
-	// store all the nodes
-	std::vector<SimNode*> _nodes;
+	std::vector<SimWire*> wires;
 };
 
 }
