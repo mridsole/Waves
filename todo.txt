@@ -1,8 +1,6 @@
-Need to organize the sim module:
-	
-Nearly done - now just implement resetting the simulation using the
-SimController. Question is where do we store the inital states - in the
-SimWires themselves? Seems like the best option - the only other option is to
-store an InitState separately, for each wire, in the SimController. The only
-advantage to this method is that it makes SimWire more lightweight, and
-there's really just not much point to that.  
+So the sim module is mostly organized. What now?
+
+	-> need to get wires drawing on the screen
+	-> need some way of visualising the heat/wave of a wire
+	-> need to manage/standardise the game representation of a wire
+		

@@ -95,20 +95,20 @@ void SimWire::update(float dt) {
 }
 
 void SimWire::reset(float dt) {
-	
+
 	// TODO: implement this!
 	initializeInPlace(this->initState, dt);
 }
 
 void SimWire::initializeInPlace(const InitState& initState_, float dt) {
-	
+
 	// set the initial state
 	if (!this->setInitState(initState_))
 		return;
 
 	// reset circular buffer position
 	this->_currentTimestepIndex = 0;
-	
+
 	// initialize the state vectors, using our stored initializers
 	this->initializeState(initState, dt);
 
@@ -177,7 +177,7 @@ const std::vector<float>& SimWire::getWave() const {
 }
 
 const std::vector<float>& SimWire::getHeat() const {
-	
+
 	return this->heat[this->_currentTimestepIndex];
 }
 
@@ -219,7 +219,7 @@ void SimWire::setStoreTimesteps(unsigned int storeTimesteps) {
 }
 
 unsigned int SimWire::getStoreTimesteps() const {
-	
+
 	return this->config.storeTimesteps;
 }
 
@@ -227,8 +227,8 @@ bool SimWire::setConfig(const Config& config) {
 
 	// validation checks first
 	if (config.dx > 0.f &&
-		config.nx >= 4 &&
-		config.storeTimesteps >= 3) {
+			config.nx >= 4 &&
+			config.storeTimesteps >= 3) {
 
 		// valid -> store data
 		this->config = config;
@@ -247,7 +247,7 @@ const SimWire::Config& SimWire::getConfig() const {
 }
 
 bool SimWire::setInitState(const InitState& initState_) {
-	
+
 	// validate first
 	if (!initState_.isValid())
 		return false;
@@ -259,7 +259,7 @@ bool SimWire::setInitState(const InitState& initState_) {
 }
 
 const SimWire::InitState& SimWire::getInitState() const {
-	
+
 	return this->initState;
 }
 
@@ -315,7 +315,7 @@ void SimWire::computeHeatDerivatives(float dt) {
 	unsigned int current_idx = this->_currentTimestepIndex;
 
 	auto& _heat_current = this->heat[current_idx];
-	
+
 	// first heat spatial derivative
 	auto& _heat_x_current = this->heat_x[current_idx];
 
@@ -437,7 +437,7 @@ void SimWire::initializeState(const InitState& initState, float dt) {
 
 	// for good measure
 	initHeatBuilder(this->heat[next_idx]);
-	
+
 	waveSpeedBuilder(this->waveSpeed);
 	dampingBuilder(this->damping);
 	diffusivityBuilder(this->diffusivity);

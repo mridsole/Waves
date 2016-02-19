@@ -27,7 +27,7 @@ public:
 
 	SimWire::Config defaultWireConfig;
 	SimWire::InitState defaultWireInitState;
-	
+
 	SimController& simCtrl;
 };
 
@@ -41,7 +41,7 @@ public:
 	static std::shared_ptr<hwsim::SimWire::StateInitializer> Create(float _value)
 	{
 		return std::shared_ptr<hwsim::SimWire::StateInitializer>(
-			new UniformWireStateInitializer(_value));
+				new UniformWireStateInitializer(_value));
 	}
 
 	UniformWireStateInitializer(float _value) :

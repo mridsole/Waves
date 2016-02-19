@@ -76,10 +76,10 @@ public:
 
 	// updates one timestep for both wave and heat
 	void update(float dt);
-	
+
 	// reset the wire to it's initial state
 	void reset(float dt);
-	
+
 	// resetting just uses this internally 
 	void initializeInPlace(const InitState& initState, float dt);
 
@@ -108,7 +108,7 @@ public:
 	// get/set config
 	bool setConfig(const Config& config);
 	const Config& getConfig() const;
-	
+
 	// get/set InitState
 	bool setInitState(const InitState& initState);
 	const InitState& getInitState() const;
@@ -118,11 +118,11 @@ public:
 
 	// is the config valid?
 	bool isConfigValid() const;
-	
+
 	// TODO: should this be a reference?
 	// the corresponding SimWireEdge graph interface
 	SimWireEdge* edge;
-	
+
 	// the SimController object for this wire
 	SimController& simCtrl;
 
@@ -147,10 +147,10 @@ private:
 	// resize the vectors that store the state
 	void allocateState();
 	void initializeState(const InitState& initState, float dt);
-	
+
 	// store the configuration provided to us
 	Config config;
-	
+
 	// store the InitState provided to us (copy)
 	// remember copying is cheap here (best case) because InitState is
 	// composed of state builders, not actual vectors
@@ -178,9 +178,9 @@ private:
 
 	std::vector<std::vector<float>> heat_x;
 	std::vector<std::vector<float>> heat_xx;
-	
+
 	// store the 'damping energy differential' - energy lost due to damping
-	
+
 	// what's the index of the 'current' timestep?
 	unsigned int _currentTimestepIndex;
 

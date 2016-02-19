@@ -29,7 +29,7 @@ float SimNode::heatBoundary(SimWire* wire, WireEnd wireEnd, float dt) {
 
 	// for now
 	if (wireEnd == WireEnd::START) {
-		
+
 		// absorb less energy than injected (on the right side) = overheating!
 		return wire->getHeatFuture()[1] + 1 * wire->config.dx;
 

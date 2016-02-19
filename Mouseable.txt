@@ -1,0 +1,11 @@
+Mouseable is the interface to use for things that can interact with the mouse
+- various event dispatchers are provided
+
+Inheriting classes need to specify the mouseInside function, which should
+return true if the mouse is inside the given object. 
+
+--
+
+onFrame, how to do this properly?
+
+have to 

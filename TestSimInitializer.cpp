@@ -28,7 +28,7 @@ struct SimInitializerTestFixture {
 	CircuitEdge* edge1;
 	CircuitEdge* edge2;
 	CircuitEdge* edge3;
-	
+
 	// our sim initializer to test
 	hwsim::SimInitializer simInit;
 
@@ -39,7 +39,7 @@ struct SimInitializerTestFixture {
 		simCtrl(SimCtrlConfig(dt)),
 		simInit(simCtrl)
 	{
-		
+
 		// note how the graph is defined before anything to do
 		// with the sim module is mentioned
 		// a very simple test graph

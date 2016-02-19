@@ -293,6 +293,7 @@
     <ClInclude Include="DirectedGraph.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="FrameUpdateDispatcher.h" />
+    <ClInclude Include="Mouseable.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="HeatWave.h" />
     <ClInclude Include="SimInitializer.h" />
@@ -349,11 +350,13 @@
   <ItemGroup>
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="CircuitGraph.cpp" />
+    <ClCompile Include="Mouseable.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="HeatWave.cpp" />
     <ClCompile Include="SimInitializer.cpp" />
     <ClCompile Include="SimController.cpp" />
     <ClCompile Include="TestCircuitGraph.cpp" />
+    <ClCompile Include="TestMouseable.cpp" />
     <ClCompile Include="tests.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tests|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -51,16 +51,11 @@ struct SimTestFixture {
 
 		// set a bunch of initial values
 		std::vector<float> zeroes(cfg.nx, 0.f);
-		
+
 		// other x-dependent properties (that we'll set as constant for now)
 		std::vector<float> waveSpeed(cfg.nx, 10.f);
 		std::vector<float> damping(cfg.nx, 1.f);
 		std::vector<float> diffusivity(cfg.nx, 1.f);
-
-		// initialize
-//		edge1->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
-//		edge2->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
-//		edge3->data.simWire->initialize(cfg, zeroes, zeroes, zeroes, waveSpeed, damping, diffusivity, dt);
 	};
 
 	~SimTestFixture() {

@@ -55,7 +55,7 @@ void SimController::removeWire(SimWire* edge) {
 }
 
 bool SimController::setConfig(const Config& config) {
-	
+
 	this->config = config;
 
 	// TODO: DO VALIDATION HERE
@@ -63,11 +63,11 @@ bool SimController::setConfig(const Config& config) {
 }
 
 const Config& SimController::getConfig() const {
-	
+
 	return this->config;
 }
 
 bool SimController::isConfigValid() const {
-	
+
 	return this->isConfigValid_;
 }
