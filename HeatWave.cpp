@@ -29,6 +29,9 @@ void HeatWave::start() {
 void HeatWave::initializeSFML() {
 
 	new (&window) sf::RenderWindow(sf::VideoMode(1024, 768), "Heat Wave");
+
+	// cap the framerate
+	window.setFramerateLimit(60);
 }
 
 // setup imgui, called before the game loop
@@ -43,7 +46,11 @@ void HeatWave::initializeIMGUI() {
 // runs the game etc
 void HeatWave::gameLoop() {
 
+	// a test wire - currently not used
 	static hwgame::Wire testWire = hwgame::Wire(frameUpdateDispatcher);
+
+	// a test mouseable object
+	static TestMouseable testMouseable(frameUpdateDispatcher);
 
 	pollWindowEvents(frameUpdateEvent.sfEvents);
 

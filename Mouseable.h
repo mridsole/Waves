@@ -1,3 +1,5 @@
+#pragma once
+
 #include "EventDispatcher.h"
 #include "FrameUpdateDispatcher.h"
 #include "SFML/Graphics.hpp"

@@ -12,6 +12,9 @@
 #include "imgui/imgui-events-SFML.h"
 #include "imgui/imgui-rendering-SFML.h"
 
+#include "Mouseable.h"
+#include "TestMouseable.h"
+
 // basically the entry point for the program
 class HeatWave
 {

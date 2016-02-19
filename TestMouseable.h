@@ -1,6 +1,4 @@
-#include "stdafx.h"
-
-#include "UnitTest++/UnitTest++.h"
+#pragma once
 
 #include "FrameUpdateDispatcher.h"
 #include "EventDispatcher.h"
@@ -14,11 +12,11 @@ class TestMouseable : public Mouseable
 public:
 
 	TestMouseable(FrameUpdateDispatcher& frameUpdateDispatcher_):
-		frameUpdateDispatcher(frameUpdateDispatcher_),
-		Mouseable::Mouseable(frameUpdateDispatcher)
+		Mouseable(frameUpdateDispatcher_),
+		frameUpdateDispatcher(frameUpdateDispatcher_)
 	{};
 
-	~TestMouseable();
+	~TestMouseable() {};
 
 	// satisfy mouseable
 	bool mouseInside(int mouseX, int mouseY) {
