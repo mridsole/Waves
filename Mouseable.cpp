@@ -36,8 +36,6 @@ void Mouseable::onFrame(const FrameUpdateEvent& frameUpdateEvent) {
 
 			if (mouseOver) {
 				
-				printf("down!\n");
-
 				// only fire if we're also inside
 				MouseableEvent mEvent(
 					MouseableEvent::Type::DOWN,
@@ -59,8 +57,6 @@ void Mouseable::onFrame(const FrameUpdateEvent& frameUpdateEvent) {
 			// only fire if we're also inside
 			if (mouseOver) {
 
-				printf("up!\n");
-
 				MouseableEvent mEvent(
 					MouseableEvent::Type::UP,
 					frameUpdateEvent,
@@ -70,8 +66,6 @@ void Mouseable::onFrame(const FrameUpdateEvent& frameUpdateEvent) {
 
 				// if pending for a click then fire the click event too
 				if (pendingClick) {
-
-					printf("click!");
 
 					MouseableEvent mEvent(
 						MouseableEvent::Type::CLICK,
@@ -103,13 +97,11 @@ void Mouseable::onFrame(const FrameUpdateEvent& frameUpdateEvent) {
 
 				if (mouseOver == true) {
 
-					printf("over!\n");
 					mEvent.type = MouseableEvent::Type::OVER;
 					onMouseOver.fire(mEvent);
 
 				} else if (mouseOver == false) {
 					
-					printf("out!\n");
 					mEvent.type = MouseableEvent::Type::LEAVE;
 					onMouseLeave.fire(mEvent);
 				}
