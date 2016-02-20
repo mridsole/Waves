@@ -1,0 +1,22 @@
+The Selectable class implements the boilerplate for things that can be
+selected with the mouse, provided with a Mouseable. 
+
+To expose the select/unselect events to the client, we use event handlers. 
+
+The client is responsible for doing the visual effects corresponding to the
+select states of the item. 
+
+Observe that our class is basically useless without some kind of 'Selection
+Manager' class that tracks clicks everywhere, and decides which area is ...
+
+Okay so now we have SelectionController, which keeps track of all Selectables
+and can deselect the previous one when a new one is selected. This setup also
+allows for the extension of multiple selections at the same time, further down
+the line. But for now, let's just do one thing selected at a time.
+
+SCOPE: we're not concerned with the case of overlapping objects - and
+actually, this is a consideration with Mouseable, not with this. (The problem
+would occur if you had two Mouseables that just perform a simple region check,
+where the regions overlap.)
+
+-> include a 'deselect' mouseable - clicking on it will deselect everything.  
