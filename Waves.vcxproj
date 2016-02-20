@@ -291,6 +291,7 @@
     <ClInclude Include="Circuit.h" />
     <ClInclude Include="CircuitGraph.h" />
     <ClInclude Include="DirectedGraph.h" />
+    <ClInclude Include="DrawWire.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="FrameUpdateDispatcher.h" />
     <ClInclude Include="Mouseable.h" />
@@ -298,6 +299,7 @@
     <ClInclude Include="HeatWave.h" />
     <ClInclude Include="Selectable.h" />
     <ClInclude Include="SelectionController.h" />
+    <ClInclude Include="sfLine.h" />
     <ClInclude Include="SimInitializer.h" />
     <ClInclude Include="SimController.h" />
     <ClInclude Include="SimGraphInterface.h" />
@@ -330,6 +332,7 @@
     <ClInclude Include="UnitTest++\UnitTestPP.h" />
     <ClInclude Include="UnitTest++\Win32\TimeHelpers.h" />
     <ClInclude Include="UnitTest++\XmlTestReporter.h" />
+    <ClInclude Include="VectorOps.h" />
     <ClInclude Include="Wire.h" />
     <ClInclude Include="GUISimControlsWindow.h" />
     <ClInclude Include="imgui\examples\ios_example\imguiex\GameViewController.h" />
@@ -352,11 +355,13 @@
   <ItemGroup>
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="CircuitGraph.cpp" />
+    <ClCompile Include="DrawWire.cpp" />
     <ClCompile Include="Mouseable.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="HeatWave.cpp" />
     <ClCompile Include="Selectable.cpp" />
     <ClCompile Include="SelectionController.cpp" />
+    <ClCompile Include="sfLine.cpp" />
     <ClCompile Include="SimInitializer.cpp" />
     <ClCompile Include="SimController.cpp" />
     <ClCompile Include="TestCircuitGraph.cpp" />
@@ -518,6 +523,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Tests|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TestsOptimized|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="VectorOps.cpp" />
     <ClCompile Include="Wire.cpp" />
     <ClCompile Include="GUISimControlsWindow.cpp" />
     <ClCompile Include="imgui\imgui.cpp">

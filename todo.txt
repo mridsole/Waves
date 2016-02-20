@@ -1,6 +1,6 @@
-So the sim module is mostly organized. What now?
+Need to carve up Wire functionality into separate classes. SimWire is fine for
+now, but we need other things to handle:
 
-	-> need to get wires drawing on the screen
-	-> need some way of visualising the heat/wave of a wire
-	-> need to manage/standardise the game representation of a wire
-		
+	-> drawing the wire on the screen
+	-> visualizing the sim state of the wire on the screen
+	-> placing the wire on the screen (and validating first)

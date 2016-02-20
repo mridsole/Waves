@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "HeatWave.h"
-
+#include "stdio.h"
 #include "Wire.h"
+#include "DrawWire.h"
 
 HeatWave::HeatWave()
 {
@@ -20,6 +21,9 @@ void HeatWave::start() {
 	
 	// initialize IMGUI
 	initializeIMGUI();
+
+	// what antialiasing level are we at?
+	//printf("Antialiasing level: %i\n", window.getSettings().antialiasingLevel);
 
 	// run the game loop
 	while (window.isOpen())
@@ -52,6 +56,9 @@ void HeatWave::gameLoop() {
 	// a test mouseable object
 	static TestMouseable testMouseable(frameUpdateDispatcher);
 
+	// test a DrawWire
+	static hwdraw::DrawWire testDrawWire;
+
 	pollWindowEvents(frameUpdateEvent.sfEvents);
 
 	for (unsigned i = 0; i < frameUpdateEvent.sfEvents.size(); i++) {
@@ -75,6 +82,9 @@ void HeatWave::gameLoop() {
 	ImGui::ShowTestWindow();
 
 	window.clear(sf::Color(255, 255, 255, 255));
+
+	// draw our test draw wire
+	window.draw(testDrawWire);
 
 	ImGui::Render();
 	window.display();
