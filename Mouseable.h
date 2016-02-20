@@ -13,7 +13,7 @@ class Mouseable {
 
 public:
 
-	struct MouseableEvent
+	struct Event
 	{
 		enum class Type { DOWN, UP, OVER, LEAVE, CLICK };
 		Type type;
@@ -21,7 +21,7 @@ public:
 		const FrameUpdateEvent& frameUpdateEvent;
 		const sf::Event& sfEvent;
 
-		MouseableEvent(Type type_, const FrameUpdateEvent& frameUpdateEvent_,
+		Event(Type type_, const FrameUpdateEvent& frameUpdateEvent_,
 			const sf::Event& sfEvent_) :
 			type(type_),
 			frameUpdateEvent(frameUpdateEvent_),
@@ -29,7 +29,7 @@ public:
 		{};
 	};
 
-	using MouseableEventDispatcher = EventDispatcher<const MouseableEvent&>;
+	using MouseableEventDispatcher = EventDispatcher<const Event&>;
 
 	Mouseable(FrameUpdateDispatcher& frameUpdateDispatcher_);
 	~Mouseable();

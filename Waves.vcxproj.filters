@@ -201,6 +201,12 @@
     <ClInclude Include="Mouseable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Selectable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -319,6 +325,12 @@
     </ClCompile>
     <ClCompile Include="TestMouseable.h">
       <Filter>Source Files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Selectable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
