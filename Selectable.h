@@ -37,8 +37,8 @@ public:
 	void deselect();
 
 	// event dispatchers for select and unselect
-	SelectableEventDispatcher onSelectDispatcher;
-	SelectableEventDispatcher onDeselectDispatcher;
+	SelectableEventDispatcher onSelect;
+	SelectableEventDispatcher onDeselect;
 
 	State state;
 

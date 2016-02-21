@@ -14,6 +14,8 @@
 
 #include "Mouseable.h"
 #include "TestMouseable.h"
+#include "SelectionController.h"
+#include "DeselectMouseable.h"
 
 // basically the entry point for the program
 class HeatWave

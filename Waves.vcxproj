@@ -290,6 +290,7 @@
   <ItemGroup>
     <ClInclude Include="Circuit.h" />
     <ClInclude Include="CircuitGraph.h" />
+    <ClInclude Include="DeselectMouseable.h" />
     <ClInclude Include="DirectedGraph.h" />
     <ClInclude Include="DrawWire.h" />
     <ClInclude Include="EventDispatcher.h" />
@@ -351,10 +352,12 @@
     <ClInclude Include="SimWire.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="WireSelectMouseable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="CircuitGraph.cpp" />
+    <ClCompile Include="DeselectMouseable.cpp" />
     <ClCompile Include="DrawWire.cpp" />
     <ClCompile Include="Mouseable.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -523,7 +526,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Tests|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TestsOptimized|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="VectorOps.cpp" />
     <ClCompile Include="Wire.cpp" />
     <ClCompile Include="GUISimControlsWindow.cpp" />
     <ClCompile Include="imgui\imgui.cpp">
@@ -566,6 +568,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TestsOptimized|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WireSelectMouseable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

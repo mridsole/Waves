@@ -21,9 +21,16 @@ SelectionController::~SelectionController()
 void SelectionController::onClickSelected(Selectable& selectable) {
 	
 	// deselect all selectables that aren't this one
-	for (auto sel : selectables) 
-		if (sel != &selectable)
+	for (auto sel : selectables) {
+		if (sel != &selectable) {
 			sel->deselect();
+		}
+	}
+	
+	// if this isn't already selected, select it
+	if (selectable.state != Selectable::State::SELECTED) {
+		selectable.select();
+	}
 }
 
 void SelectionController::onClickDeselect(const Mouseable::Event& mEvent) {

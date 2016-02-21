@@ -216,6 +216,12 @@
     <ClInclude Include="VectorOps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WireSelectMouseable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeselectMouseable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -344,10 +350,13 @@
     <ClCompile Include="sfLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VectorOps.cpp">
+    <ClCompile Include="DrawWire.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawWire.cpp">
+    <ClCompile Include="WireSelectMouseable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeselectMouseable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

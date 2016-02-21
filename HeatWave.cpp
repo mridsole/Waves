@@ -51,13 +51,17 @@ void HeatWave::initializeIMGUI() {
 void HeatWave::gameLoop() {
 
 	// a test wire - currently not used
-	static hwgame::Wire testWire = hwgame::Wire(frameUpdateDispatcher);
+//	static hwgame::Wire testWire = hwgame::Wire(frameUpdateDispatcher);
 
-	// a test mouseable object
-	static TestMouseable testMouseable(frameUpdateDispatcher);
-
+	// a test mouseable 
+//	static TestMouseable testMouseable(frameUpdateDispatcher);
+	
+	// currently used for testing DrawWire
+	static DeselectMouseable deselectMouseable(frameUpdateDispatcher);
+	static SelectionController selCtrl(deselectMouseable);
+	
 	// test a DrawWire
-	static hwdraw::DrawWire testDrawWire;
+	static hwdraw::DrawWire testDrawWire(selCtrl, frameUpdateDispatcher);
 
 	pollWindowEvents(frameUpdateEvent.sfEvents);
 
