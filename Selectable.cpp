@@ -15,6 +15,12 @@ Selectable::Selectable(SelectionController& selCtrl_,
 	// bind our function to the mouseable's click dispatcher
 	onClickCallbackID = mouseable.onClick.addCallback(
 		std::bind(&Selectable::onClick, this, std::placeholders::_1));
+
+	onMouseOverCallbackID = mouseable.onMouseOver.addCallback(
+		std::bind(&Selectable::onMouseOver, this, std::placeholders::_1));
+
+	onMouseLeaveCallbackID = mouseable.onMouseLeave.addCallback(
+		std::bind(&Selectable::onMouseLeave, this, std::placeholders::_1));
 }
 
 Selectable::~Selectable()
@@ -42,9 +48,6 @@ void Selectable::select() {
 
 void Selectable::deselect() {
 	
-	if (state == State::DEFAULT)
-		return;
-
 	state = State::DEFAULT;
 
 	Event selEvent(Event::Type::DESELECTED, *this);
@@ -59,4 +62,23 @@ void Selectable::onClick(const Mouseable::Event& mEvent) {
 
 	// otherwise, flag as selected and notify the selCtrl
 	selCtrl.onClickSelected(*this);
+}
+
+void Selectable::onMouseOver(const Mouseable::Event& mEvent) {
+	
+	// don't change state if we're selected
+	if (state == Selectable::State::DEFAULT)
+		state = Selectable::State::HOVER;
+
+	Event selEvent(Event::Type::HOVER, *this);
+	onHover.fire(selEvent);
+}
+
+void Selectable::onMouseLeave(const Mouseable::Event& mEvent) {
+	
+	if (state == Selectable::State::HOVER)
+		state = Selectable::State::DEFAULT;
+	
+	Event selEvent(Event::Type::LEAVE, *this);
+	onLeave.fire(selEvent);
 }

@@ -22,7 +22,7 @@ void SelectionController::onClickSelected(Selectable& selectable) {
 	
 	// deselect all selectables that aren't this one
 	for (auto sel : selectables) {
-		if (sel != &selectable) {
+		if (sel != &selectable && sel->state != Selectable::State::DEFAULT) {
 			sel->deselect();
 		}
 	}

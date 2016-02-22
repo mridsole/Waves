@@ -11,13 +11,13 @@ DrawWire::DrawWire(SelectionController& selCtrl,
 	selMouseable(fUDispatch, *this),
 	selectable(selCtrl, selMouseable)
 {
-	// for now just test the line with some arbitrary values
+	// the drawline defaults
 	drawLine.thickness = 3.f;
-	drawLine.startPos = sf::Vector2f(250, 250);
-	drawLine.endPos = sf::Vector2f(400, 350);
 	drawLine.color = sf::Color::Black;
-
 	drawLine.makeLine();
+
+	selectedDrawLine.thickness = drawLine.thickness * 3;
+	selectedDrawLine.color = sf::Color(100, 100, 255, 100);
 
 	// bind selectable events
 	onSelectCallbackID = selectable.onSelect.addCallback(
@@ -37,24 +37,49 @@ DrawWire::~DrawWire() {
 
 void DrawWire::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
+	// if our line is selected then draw the selection indicator
+	if(selectable.state == Selectable::State::SELECTED)
+		target.draw(selectedDrawLine);
+
 	// draw the line
 	target.draw(drawLine);
 }
 
 // TODO: decide on where to actually store these
 sf::Vector2f DrawWire::getStartPos() const {
+
 	return drawLine.startPos;
 }
 
 sf::Vector2f DrawWire::getEndPos() const {
+
 	return drawLine.endPos;
+}
+
+void DrawWire::setStartPos(sf::Vector2f pos) {
+	
+	drawLine.startPos = pos;
+	drawLine.makeLine();
+
+	// match the select line
+	selectedDrawLine.startPos = pos;
+	selectedDrawLine.makeLine();
+}
+
+void DrawWire::setEndPos(sf::Vector2f pos) {
+	
+	drawLine.endPos = pos;
+	drawLine.makeLine();
+
+	selectedDrawLine.endPos = pos;
+	selectedDrawLine.makeLine();
 }
 
 void DrawWire::onSelect(const Selectable::Event& selEvent) {
 
 	// change the wire to blue
-	drawLine.color = sf::Color::Blue;
-	drawLine.makeLine();
+//	drawLine.color = sf::Color::Blue;
+//	drawLine.makeLine();
 }
 
 void DrawWire::onDeselect(const Selectable::Event& selEvent) {
@@ -62,5 +87,6 @@ void DrawWire::onDeselect(const Selectable::Event& selEvent) {
 	printf("Wire deselected!\n");
 
 	// change the wire to black
-	drawLine.color = sf::Color::Black;
+//	drawLine.color = sf::Color::Black;
+//	drawLine.makeLine();
 }

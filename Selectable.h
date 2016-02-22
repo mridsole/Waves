@@ -17,7 +17,7 @@ public:
 	struct Event 
 	{
 		// the type of event
-		enum class Type { SELECTED, DESELECTED };
+		enum class Type { SELECTED, DESELECTED, HOVER, LEAVE };
 		
 		Type type;
 		Selectable& source;
@@ -39,6 +39,8 @@ public:
 	// event dispatchers for select and unselect
 	SelectableEventDispatcher onSelect;
 	SelectableEventDispatcher onDeselect;
+	SelectableEventDispatcher onHover;
+	SelectableEventDispatcher onLeave;
 
 	State state;
 
@@ -46,6 +48,12 @@ private:
 
 	unsigned int onClickCallbackID;
 	void onClick(const Mouseable::Event& mEvent);
+
+	unsigned int onMouseOverCallbackID;
+	void onMouseOver(const Mouseable::Event& mEvent);
+
+	unsigned int onMouseLeaveCallbackID;
+	void onMouseLeave(const Mouseable::Event& mEvent);
 
 	SelectionController& selCtrl;
 	Mouseable& mouseable;

@@ -32,7 +32,8 @@ void HeatWave::start() {
 
 void HeatWave::initializeSFML() {
 
-	new (&window) sf::RenderWindow(sf::VideoMode(1024, 768), "Heat Wave");
+	new (&window) sf::RenderWindow(sf::VideoMode(1024, 768), "Heat Wave",
+		sf::Style::Close, sf::ContextSettings(0, 0, 8));
 
 	// cap the framerate
 	window.setFramerateLimit(60);
@@ -61,7 +62,17 @@ void HeatWave::gameLoop() {
 	static SelectionController selCtrl(deselectMouseable);
 	
 	// test a DrawWire
-	static hwdraw::DrawWire testDrawWire(selCtrl, frameUpdateDispatcher);
+	static hwdraw::DrawWire testDrawWire1(selCtrl, frameUpdateDispatcher);
+	static hwdraw::DrawWire testDrawWire2(selCtrl, frameUpdateDispatcher);
+	static hwdraw::DrawWire testDrawWire3(selCtrl, frameUpdateDispatcher);
+
+	// set the positions of the other two
+	testDrawWire1.setStartPos(sf::Vector2f(100, 100));
+	testDrawWire1.setEndPos(sf::Vector2f(50, 250));
+	testDrawWire2.setStartPos(sf::Vector2f(500, 0));
+	testDrawWire2.setEndPos(sf::Vector2f(50, 250));
+	testDrawWire3.setStartPos(sf::Vector2f(400, 450));
+	testDrawWire3.setEndPos(sf::Vector2f(50, 250));
 
 	pollWindowEvents(frameUpdateEvent.sfEvents);
 
@@ -88,7 +99,9 @@ void HeatWave::gameLoop() {
 	window.clear(sf::Color(255, 255, 255, 255));
 
 	// draw our test draw wire
-	window.draw(testDrawWire);
+	window.draw(testDrawWire1);
+	window.draw(testDrawWire2);
+	window.draw(testDrawWire3);
 
 	ImGui::Render();
 	window.display();

@@ -28,6 +28,10 @@ public:
 	// get the start/end positions of the wire
 	sf::Vector2f getStartPos() const;
 	sf::Vector2f getEndPos() const;
+	
+	// set positions
+	void setStartPos(sf::Vector2f pos);
+	void setEndPos(sf::Vector2f pos);
 
 	// the mouseable for selecting the wire
 	WireSelectMouseable selMouseable;
@@ -45,6 +49,12 @@ private:
 
 	// the line used to draw this
 	Line drawLine;
+
+	// the underline used to indicate that the wire is selected
+	Line selectedDrawLine;
+
+	// the underline used for mouse hover
+	Line hoverDrawLine;
 };
 
 };
