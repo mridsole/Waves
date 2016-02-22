@@ -39,12 +39,12 @@ badd +5 TestMouseable.cpp
 badd +11 Mouseable.txt
 badd +1 HeatWave.h
 badd +1 TestMouseable.h
-badd +31 Selectable.h
-badd +10 Selectable.cpp
+badd +1 Selectable.h
+badd +45 Selectable.cpp
 badd +1 Selectable.txt
 badd +1 SelectionController.h
 badd +1 SelectionController.cpp
-badd +27 DrawWire.h
+badd +1 DrawWire.h
 badd +1 DrawWire.cpp
 badd +18 sfLine.h
 badd +9 sfLine.cpp
@@ -64,15 +64,17 @@ badd +1 powershell\ -\ 3
 badd +33 ~\vimfiles\bundle\Conque-Shell\plugin\conque_term.vim
 badd +39 ~\vimfiles\bundle\Conque-Shell\autoload\conque_term.vim
 badd +1 ~\vimfiles\bundle\Conque-Shell\syntax\conque_term.vim
-badd +8 powershell\ -\ 1
 badd +225 ~\vimfiles\bundle\vim-wasabi-colorscheme\colors\wasabi256.vim
 badd +1 ~\bundle
 badd +1 powershell\ -\ 2
 badd +1 c:\programs\vim\vim74\autoload
 badd +3795 \programs\vim\vim74\autoload\netrw.vim
 badd +1 DrawWireSelectMouseable.h
-badd +0 WireSelectMouseable.cpp
-badd +0 WireSelectMouseable.h
+badd +1 WireSelectMouseable.cpp
+badd +13 WireSelectMouseable.h
+badd +0 powershell\ -\ 1
+badd +0 CircuitGraph.h
+badd +0 CircuitGraph.cpp
 argglobal
 silent! argdel *
 argadd SimWire.cpp
@@ -95,13 +97,13 @@ set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 37 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 102 + 137) / 274)
-exe '2resize ' . ((&lines * 25 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 102 + 137) / 274)
+exe 'vert 1resize ' . ((&columns * 103 + 137) / 274)
+exe '2resize ' . ((&lines * 26 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 103 + 137) / 274)
 exe '3resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 3resize ' . ((&columns * 169 + 137) / 274)
-exe '4resize ' . ((&lines * 33 + 33) / 67)
-exe 'vert 4resize ' . ((&columns * 169 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 170 + 137) / 274)
+exe '4resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 4resize ' . ((&columns * 170 + 137) / 274)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -112,11 +114,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 18) / 37)
+let s:l = 19 - ((9 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+19
 normal! 0
 lcd e:\projects\Waves\Waves
 wincmd w
@@ -131,12 +133,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 12) / 25)
+let s:l = 6 - ((5 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 6
-normal! 060|
+normal! 013|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -150,12 +152,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 456 - ((0 * winheight(0) + 14) / 29)
+let s:l = 442 - ((14 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-456
-normal! 0
+442
+normal! 05|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -169,7 +171,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((0 * winheight(0) + 16) / 33)
+let s:l = 49 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -178,13 +180,13 @@ normal! 05|
 lcd e:\projects\Waves\Waves
 wincmd w
 exe '1resize ' . ((&lines * 37 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 102 + 137) / 274)
-exe '2resize ' . ((&lines * 25 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 102 + 137) / 274)
+exe 'vert 1resize ' . ((&columns * 103 + 137) / 274)
+exe '2resize ' . ((&lines * 26 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 103 + 137) / 274)
 exe '3resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 3resize ' . ((&columns * 169 + 137) / 274)
-exe '4resize ' . ((&lines * 33 + 33) / 67)
-exe 'vert 4resize ' . ((&columns * 169 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 170 + 137) / 274)
+exe '4resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 4resize ' . ((&columns * 170 + 137) / 274)
 tabedit e:\projects\Waves\Waves\SimInitializer.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -201,12 +203,12 @@ wincmd w
 set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 80 + 137) / 274)
+exe 'vert 1resize ' . ((&columns * 79 + 137) / 274)
 exe '2resize ' . ((&lines * 19 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 109 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 97 + 137) / 274)
 exe '3resize ' . ((&lines * 44 + 33) / 67)
-exe 'vert 3resize ' . ((&columns * 109 + 137) / 274)
-exe 'vert 4resize ' . ((&columns * 83 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 97 + 137) / 274)
+exe 'vert 4resize ' . ((&columns * 96 + 137) / 274)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -217,12 +219,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 32) / 64)
+let s:l = 43 - ((42 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+43
+normal! 09|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -282,12 +284,12 @@ normal! zt
 normal! 0
 lcd e:\projects\Waves\Waves
 wincmd w
-exe 'vert 1resize ' . ((&columns * 80 + 137) / 274)
+exe 'vert 1resize ' . ((&columns * 79 + 137) / 274)
 exe '2resize ' . ((&lines * 19 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 109 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 97 + 137) / 274)
 exe '3resize ' . ((&lines * 44 + 33) / 67)
-exe 'vert 3resize ' . ((&columns * 109 + 137) / 274)
-exe 'vert 4resize ' . ((&columns * 83 + 137) / 274)
+exe 'vert 3resize ' . ((&columns * 97 + 137) / 274)
+exe 'vert 4resize ' . ((&columns * 96 + 137) / 274)
 tabedit e:\projects\Waves\Waves\HeatWave.cpp
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -312,18 +314,18 @@ wincmd w
 set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 30 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 88 + 137) / 274)
-exe '2resize ' . ((&lines * 33 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 88 + 137) / 274)
+exe '1resize ' . ((&lines * 29 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 87 + 137) / 274)
+exe '2resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 87 + 137) / 274)
 exe '3resize ' . ((&lines * 29 + 33) / 67)
 exe 'vert 3resize ' . ((&columns * 103 + 137) / 274)
 exe '4resize ' . ((&lines * 34 + 33) / 67)
 exe 'vert 4resize ' . ((&columns * 103 + 137) / 274)
 exe '5resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 81 + 137) / 274)
+exe 'vert 5resize ' . ((&columns * 82 + 137) / 274)
 exe '6resize ' . ((&lines * 34 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 81 + 137) / 274)
+exe 'vert 6resize ' . ((&columns * 82 + 137) / 274)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -334,12 +336,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((21 * winheight(0) + 15) / 30)
+let s:l = 74 - ((17 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 074|
+74
+normal! 051|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -353,7 +355,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 16) / 33)
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -410,7 +412,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((16 * winheight(0) + 14) / 29)
+let s:l = 17 - ((14 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -429,7 +431,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((1 * winheight(0) + 17) / 34)
+let s:l = 19 - ((16 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -437,18 +439,18 @@ normal! zt
 normal! 09|
 lcd e:\projects\Waves\Waves
 wincmd w
-exe '1resize ' . ((&lines * 30 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 88 + 137) / 274)
-exe '2resize ' . ((&lines * 33 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 88 + 137) / 274)
+exe '1resize ' . ((&lines * 29 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 87 + 137) / 274)
+exe '2resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 87 + 137) / 274)
 exe '3resize ' . ((&lines * 29 + 33) / 67)
 exe 'vert 3resize ' . ((&columns * 103 + 137) / 274)
 exe '4resize ' . ((&lines * 34 + 33) / 67)
 exe 'vert 4resize ' . ((&columns * 103 + 137) / 274)
 exe '5resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 81 + 137) / 274)
+exe 'vert 5resize ' . ((&columns * 82 + 137) / 274)
 exe '6resize ' . ((&lines * 34 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 81 + 137) / 274)
+exe 'vert 6resize ' . ((&columns * 82 + 137) / 274)
 tabedit e:\projects\Waves\Waves\Selectable.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -473,18 +475,18 @@ wincmd w
 set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 38 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 86 + 137) / 274)
-exe '2resize ' . ((&lines * 25 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 86 + 137) / 274)
-exe '3resize ' . ((&lines * 30 + 33) / 67)
+exe '1resize ' . ((&lines * 37 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 85 + 137) / 274)
+exe '2resize ' . ((&lines * 26 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 85 + 137) / 274)
+exe '3resize ' . ((&lines * 29 + 33) / 67)
 exe 'vert 3resize ' . ((&columns * 83 + 137) / 274)
-exe '4resize ' . ((&lines * 33 + 33) / 67)
+exe '4resize ' . ((&lines * 34 + 33) / 67)
 exe 'vert 4resize ' . ((&columns * 83 + 137) / 274)
-exe '5resize ' . ((&lines * 31 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 103 + 137) / 274)
-exe '6resize ' . ((&lines * 32 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 103 + 137) / 274)
+exe '5resize ' . ((&lines * 30 + 33) / 67)
+exe 'vert 5resize ' . ((&columns * 104 + 137) / 274)
+exe '6resize ' . ((&lines * 33 + 33) / 67)
+exe 'vert 6resize ' . ((&columns * 104 + 137) / 274)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -495,12 +497,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 20 - ((15 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+20
+normal! 09|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -514,7 +516,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 12) / 25)
+let s:l = 2 - ((1 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -533,12 +535,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 10 - ((9 * winheight(0) + 15) / 30)
+let s:l = 82 - ((27 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
-normal! 025|
+82
+normal! 030|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -565,11 +567,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((10 * winheight(0) + 15) / 31)
+let s:l = 40 - ((28 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-11
+40
 normal! 09|
 lcd e:\projects\Waves\Waves
 wincmd w
@@ -584,7 +586,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 30 - ((15 * winheight(0) + 16) / 32)
+let s:l = 30 - ((15 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -592,18 +594,19 @@ normal! zt
 normal! 041|
 lcd e:\projects\Waves\Waves
 wincmd w
-exe '1resize ' . ((&lines * 38 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 86 + 137) / 274)
-exe '2resize ' . ((&lines * 25 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 86 + 137) / 274)
-exe '3resize ' . ((&lines * 30 + 33) / 67)
+4wincmd w
+exe '1resize ' . ((&lines * 37 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 85 + 137) / 274)
+exe '2resize ' . ((&lines * 26 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 85 + 137) / 274)
+exe '3resize ' . ((&lines * 29 + 33) / 67)
 exe 'vert 3resize ' . ((&columns * 83 + 137) / 274)
-exe '4resize ' . ((&lines * 33 + 33) / 67)
+exe '4resize ' . ((&lines * 34 + 33) / 67)
 exe 'vert 4resize ' . ((&columns * 83 + 137) / 274)
-exe '5resize ' . ((&lines * 31 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 103 + 137) / 274)
-exe '6resize ' . ((&lines * 32 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 103 + 137) / 274)
+exe '5resize ' . ((&lines * 30 + 33) / 67)
+exe 'vert 5resize ' . ((&columns * 104 + 137) / 274)
+exe '6resize ' . ((&lines * 33 + 33) / 67)
+exe 'vert 6resize ' . ((&columns * 104 + 137) / 274)
 tabedit e:\projects\Waves\Waves\DrawWire.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -628,18 +631,18 @@ wincmd w
 set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 44 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 80 + 137) / 274)
-exe '2resize ' . ((&lines * 19 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 80 + 137) / 274)
+exe '1resize ' . ((&lines * 43 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 79 + 137) / 274)
+exe '2resize ' . ((&lines * 20 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 79 + 137) / 274)
 exe '3resize ' . ((&lines * 29 + 33) / 67)
 exe 'vert 3resize ' . ((&columns * 97 + 137) / 274)
 exe '4resize ' . ((&lines * 34 + 33) / 67)
 exe 'vert 4resize ' . ((&columns * 97 + 137) / 274)
 exe '5resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 95 + 137) / 274)
+exe 'vert 5resize ' . ((&columns * 96 + 137) / 274)
 exe '6resize ' . ((&lines * 34 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 95 + 137) / 274)
+exe 'vert 6resize ' . ((&columns * 96 + 137) / 274)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -650,12 +653,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+let s:l = 57 - ((41 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+57
+normal! 023|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -669,12 +672,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 9) / 19)
+let s:l = 9 - ((8 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 9
-normal! 040|
+normal! 030|
 lcd e:\projects\Waves\Waves
 wincmd w
 argglobal
@@ -688,11 +691,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 29)
+let s:l = 28 - ((27 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+28
 normal! 0
 lcd e:\projects\Waves\Waves
 wincmd w
@@ -707,11 +710,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 54 - ((33 * winheight(0) + 17) / 34)
+let s:l = 55 - ((33 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-54
+55
 normal! 012|
 lcd e:\projects\Waves\Waves
 wincmd w
@@ -726,11 +729,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 14) / 29)
+let s:l = 13 - ((12 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
+13
 normal! 0
 lcd e:\projects\Waves\Waves
 wincmd w
@@ -745,7 +748,48 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 17) / 34)
+let s:l = 8 - ((7 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+8
+normal! 023|
+lcd e:\projects\Waves\Waves
+wincmd w
+exe '1resize ' . ((&lines * 43 + 33) / 67)
+exe 'vert 1resize ' . ((&columns * 79 + 137) / 274)
+exe '2resize ' . ((&lines * 20 + 33) / 67)
+exe 'vert 2resize ' . ((&columns * 79 + 137) / 274)
+exe '3resize ' . ((&lines * 29 + 33) / 67)
+exe 'vert 3resize ' . ((&columns * 97 + 137) / 274)
+exe '4resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 4resize ' . ((&columns * 97 + 137) / 274)
+exe '5resize ' . ((&lines * 29 + 33) / 67)
+exe 'vert 5resize ' . ((&columns * 96 + 137) / 274)
+exe '6resize ' . ((&lines * 34 + 33) / 67)
+exe 'vert 6resize ' . ((&columns * 96 + 137) / 274)
+tabedit e:\projects\Waves\Waves\CircuitGraph.h
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+wincmd t
+set winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 136 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 137 + 137) / 274)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -753,20 +797,28 @@ normal! zt
 normal! 0
 lcd e:\projects\Waves\Waves
 wincmd w
-5wincmd w
-exe '1resize ' . ((&lines * 44 + 33) / 67)
-exe 'vert 1resize ' . ((&columns * 80 + 137) / 274)
-exe '2resize ' . ((&lines * 19 + 33) / 67)
-exe 'vert 2resize ' . ((&columns * 80 + 137) / 274)
-exe '3resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 3resize ' . ((&columns * 97 + 137) / 274)
-exe '4resize ' . ((&lines * 34 + 33) / 67)
-exe 'vert 4resize ' . ((&columns * 97 + 137) / 274)
-exe '5resize ' . ((&lines * 29 + 33) / 67)
-exe 'vert 5resize ' . ((&columns * 95 + 137) / 274)
-exe '6resize ' . ((&lines * 34 + 33) / 67)
-exe 'vert 6resize ' . ((&columns * 95 + 137) / 274)
-tabnext 5
+argglobal
+edit e:\projects\Waves\Waves\CircuitGraph.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 9 - ((8 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+9
+normal! 0
+lcd e:\projects\Waves\Waves
+wincmd w
+exe 'vert 1resize ' . ((&columns * 136 + 137) / 274)
+exe 'vert 2resize ' . ((&columns * 137 + 137) / 274)
+tabnext 4
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
